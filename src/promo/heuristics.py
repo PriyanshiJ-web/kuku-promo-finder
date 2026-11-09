@@ -46,6 +46,11 @@ def propose_offline(show: Show, max_props: int) -> list[Proposal]:
             if ln.start >= ep.duration - END_BONUS_WINDOW:
                 conf = min(1.0, conf + END_BONUS)
             scored.append((conf, i))
+        if not scored and rows:
+            # no keyword at all (a plain-spoken show): fall back to the last WINDOW seconds of the
+            # episode, where the show's own cliffhanger usually sits, with a low confidence
+            tail = [k for k, x in enumerate(rows) if x.start >= ep.duration - WINDOW]
+            scored.append((0.05, tail[0] if tail else 0))
         taken: list[float] = []
         for conf, i in sorted(scored, key=lambda t: (-t[0], t[1])):
             ln = rows[i]
@@ -55,5 +60,6 @@ def propose_offline(show: Show, max_props: int) -> list[Proposal]:
             taken.append(ln.start)
             out.append(Proposal(ep=ep.num, start_id=ln.id, hook_id=ln.id, cliff_id=last.id,
                                 end_id=last.id, hook_type=hits[i][1], confidence=round(conf, 4),
-                                why="keyword and emotion density"))  # fmt: skip
+                                why="keyword and emotion density" if conf > 0.05
+                                else "no keywords: last 45 s of the episode"))  # fmt: skip
     return out

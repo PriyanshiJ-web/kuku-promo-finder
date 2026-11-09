@@ -270,6 +270,9 @@ def _check_not_empty(ctx, stages) -> None:
     fails = [ctx.artifacts.get(s, {}).get("failures", []) for s in ("bible", "propose")]
     why = [x["error"] for group in fails for x in group]
     console.print("[red]No promos were produced.[/red]")
+    if ctx.offline:
+        console.print("Offline rules found no usable span (episodes shorter than about 20 s?).")
+        raise typer.Exit(1)
     for line in dict.fromkeys(why):
         console.print(f"  model failure: {line[:160]}")
     console.print(

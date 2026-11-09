@@ -490,3 +490,16 @@ async def test_out_suffix_writes_to_a_separate_directory(tmp_path):
     await run_pipeline(ctx)
     assert ctx.out_dir.name == "t__alt" and (ctx.out_dir / "promos.json").exists()
     assert not (tmp_path / "out" / "t").exists()
+
+
+def test_offline_falls_back_to_the_episode_ending_when_no_keyword_matches():
+    from promo.heuristics import propose_offline
+
+    from .synth import mkep, mkshow
+
+    ep, _ = mkep(1, [("a", "dialogue", 10, 13, "The tide comes in at six."),
+                     ("b", "dialogue", 70, 74, "Bring the boat round."),
+                     ("c", "dialogue", 90, 95, "We leave at dawn.")], 100.0)  # fmt: skip
+    props = propose_offline(mkshow(ep), 6)
+    assert len(props) == 1 and props[0].confidence == 0.05
+    assert props[0].hook_id.endswith("L002") or props[0].hook_id.endswith("L003")
