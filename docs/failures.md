@@ -87,10 +87,17 @@ reading is that the checks are weak where it matters most, at the top.
 ## Update after the cut polish step (code only, no new model calls)
 
 - Mid-sentence starts: 3 of the top 30 opened on the tail of a sentence. The polish step moved 2
-  (ranks 1 and 23) to open on the hook line. The third is not fixed.
-- Answer inside the clip: 2 of the 3 promos were cut before the answer line, 1 is flagged G8 and
-  sits last. Only the bible's 5 questions are known, so other early answers are still missed.
+  (ranks 1 and 23) to open on the hook line. The third (rank 6) is not fixed: the hook line itself
+  starts mid-sentence, so moving the start would remove the hook.
+- Answer inside the clip: 4 promos contained a line that the bible marks as the answer to an open
+  question, their own or another one (which spoils it). 2 were cut before that line and 2 are
+  flagged G8 and sit last, one of them a former rank 3 montage. Only the bible's 5 questions are
+  known, so other early answers are still missed.
 - Near-duplicates: stricter thresholds dropped 2 promos (73 became 71).
+- Rule-based audit (`audit.md`): the tool's top 10 has 0.10 defective clips, random 45 s windows
+  0.26, last 45 s of each episode 0.22, one prompt over the show 0.20, and the keyword heuristic
+  0.00. The audit therefore does not separate the tool from the heuristic: it only counts broken
+  cuts, not drama.
+- A second, independent model run finds 0.30 of the tool's top 20, so the list depends on the
+  model and is a candidate list for an editor.
 - Not changed: the cold-view scores and the judge ranking were computed before polishing.
-  The top 10 ids are the same, so the eval in eval.md still describes them, but 2 of those clips
-  now start a few seconds later than the clips the judge saw.

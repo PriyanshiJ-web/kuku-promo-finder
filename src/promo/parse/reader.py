@@ -112,6 +112,8 @@ def parse_episode_text(text: str, filename: str, fallback_num: int) -> tuple[Epi
     for raw in text.splitlines():
         line = raw.strip()
         if not line:
+            if state == "text" and blk is not None and not blk.text:
+                continue  # blank line between the time line and the text: keep waiting for it
             if state in ("text", "skip"):
                 flush()
                 state = "idle"

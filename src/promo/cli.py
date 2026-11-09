@@ -351,6 +351,34 @@ def polish(
     console.print(f"promos: {art['meta']['promos']}, polish: {art['meta']['polish']}")
 
 
+@app.command()
+def audit(
+    show: Annotated[str, typer.Option(help="show name used by `promo run`")],
+) -> None:
+    """Rule-based defect audit of the tool's clips against baselines (no model, no labels)."""
+    from promo.evaluation import audit as audit_mod
+    from promo.runner import write_atomic, write_json
+    from promo.stages.bible import apply_aliases
+    from promo.stages.build import BuildParams
+
+    out = Path("outputs") / show
+    man = load_manifest(out)
+    if not man.get("folder") or not (out / "promos.json").exists():
+        console.print(f"[red]no finished run for show '{show}', use `promo run` first[/red]")
+        raise typer.Exit(2)
+    try:
+        ctx = make_ctx(man["folder"], show, load_config(), man.get("episodes"))
+        bible = json.loads((out / "bible.json").read_text())
+        apply_aliases(ctx.full_show, bible["meta"]["alias_map"])
+        res = audit_mod.run_audit(out, ctx.full_show, BuildParams.from_ctx(ctx),
+                                  ctx.params.max_props_per_ep)  # fmt: skip
+    except (StageAbort, ConfigError) as e:
+        raise _fail(e) from e
+    write_json(out / "audit.json", res)
+    write_atomic(out / "audit.md", audit_mod.markdown(show, res).encode())
+    console.print((out / "audit.md").read_text())
+
+
 @app.command("eval")
 def eval_cmd(
     show: Annotated[str, typer.Option(help="show name used by `promo run`")],

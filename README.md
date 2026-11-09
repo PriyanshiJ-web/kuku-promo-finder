@@ -129,6 +129,15 @@ clip as three parts (the opening, the full clip, the last lines) and answers thr
 questions, hook, ending and clarity, the code takes the majority. `report` keeps only the best
 variant (tight or loose) of each proposal, so a moment appears once in `promos.csv`.
 
+## Defect audit
+
+`promo audit --show NAME` applies the same rule-based checks (opens mid-sentence, no speech in the
+first 3 s, ends mid-sentence, contains the answer to an open question, contains a spoiler line) to
+the tool's top clips and to every baseline, and writes `audit.md`. It uses no model and no labels,
+so it is free, repeatable and cannot be swayed by a judge's taste. It counts broken cuts, it does
+not measure how good a clip is. A model-free check of the same kind is the second run with another
+model (`--out-suffix`): `audit.md` reports how many of the top 20 the independent run also found.
+
 ## Cut polish
 
 The report step (code only, no model call) cleans the final list: a clip that opens on the tail of
@@ -138,7 +147,10 @@ near-duplicates (time overlap above 0.4 or word overlap above 0.5) are dropped. 
 finished run without any model call: `promo polish --show NAME`. Cold-view and judge scores were
 computed on the unpolished clip and are kept as they were.
 
-Note: stage hashes cover the prompt files, the profile and the input bytes. A saved run only
+Note: stage hashes cover the prompt files, the profile and the input bytes. For a show of 100+ episodes raise `max_calls` and `max_tokens` in `config/pipeline.yaml`
+(`promo estimate` prints the planned calls; the guard aborts before any call if they are exceeded).
+
+A saved run only
 hash-skips when those are unchanged, so after editing a prompt (or on another machine whose
 profile or data bytes differ) `promo run` calls the models again. Use `promo polish` and
 `promo eval` on a saved run instead of `promo run`.

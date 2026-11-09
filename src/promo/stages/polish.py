@@ -3,7 +3,7 @@
 Three rules, each one targets a flaw found in docs/failures.md:
 1. A clip must not open on the tail of a sentence (text starting "..." or lower case): the start
    moves forward to the first clean cut at or before the hook line.
-2. A clip must not contain the line where the bible says its own question is answered: the end
+2. A clip must not contain a line where the bible says an open question is answered: the end
    moves back to the last clean cut before that line, or the promo is flagged (gate G8) and sent
    to the bottom when it would become too short.
 3. Near-duplicates the build stage let through (time overlap > 0.4 or word overlap > 0.5) are
@@ -52,23 +52,25 @@ def fix_start(p: Promo, show: Show) -> str | None:
 
 
 def fix_end(p: Promo, show: Show, bible: Bible) -> str | None:
-    """Cut before the line that answers the promo's own question, when that line is inside."""
+    """Cut before a line that answers ANY open question of the bible, when that line is inside.
+
+    Showing the answer to the promo's own question kills the cliffhanger, and showing the answer to
+    another question is a spoiler, so both are handled the same way.
+    """
     c = p.candidate
-    qs = {q.idx: q for q in bible.open_questions}
-    q = qs.get(c.question_ref) if c.question_ref is not None else None
-    if q is None or not q.resolved_at:
-        return None
-    ans = show.line(q.resolved_at)
+    answers = [show.line(q.resolved_at) for q in bible.open_questions if q.resolved_at]
     for i, seg in enumerate(c.segments):
-        if ans.ep != seg.ep or not (seg.start - 0.05 <= ans.start < seg.end):
+        hit = [a for a in answers if a.ep == seg.ep and seg.start - 0.05 <= a.start < seg.end]
+        if not hit:
             continue
+        ans = min(hit, key=lambda a: a.start)
         ep = show.ep(seg.ep)
         before = [x for x in ep.cuts if seg.start + 3.0 <= x <= ans.start + EPS]
         new = max(before) if before else None
         cut_total = c.duration - (seg.end - new) if new else 0.0
         later = c.segments[i + 1 :]
         if new is None or later or cut_total < MIN_LEN - EPS:
-            why = "the line that answers its question is inside"
+            why = "a line that answers an open question is inside"
             p.gates.append(GateResult(gate="G8", passed=False, hard=False, reason=why))
             return "answer_inside_flagged"
         c.segments[i] = make_segment(ep, seg.start, new, (seg.start_id, seg.end_id))

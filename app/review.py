@@ -211,11 +211,15 @@ with tab_h:
 with tab_q:
     shown = False
     if run:
-        for name, title in (("eval.md", "Comparison with baselines"), ("report.md", "Run report")):
+        for name, title in (
+            ("audit.md", "Defect audit (rule-based, no model)"),
+            ("eval.md", "Comparison with baselines (judge model)"),
+            ("report.md", "Run report"),
+        ):
             f = run / name
             if f.exists():
                 shown = True
-                with st.expander(title, expanded=name == "eval.md"):
+                with st.expander(title, expanded=name != "report.md"):
                     st.markdown(f.read_text(encoding="utf-8"))
     if run and (done_q := reviews(run)):
         top10 = {p["candidate"]["id"] for p in (promos or [])[:10]}
