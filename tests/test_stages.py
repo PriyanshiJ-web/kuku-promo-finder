@@ -503,3 +503,21 @@ def test_offline_falls_back_to_the_episode_ending_when_no_keyword_matches():
     props = propose_offline(mkshow(ep), 6)
     assert len(props) == 1 and props[0].confidence == 0.05
     assert props[0].hook_id.endswith("L002") or props[0].hook_id.endswith("L003")
+
+
+def test_offline_propose_hash_follows_the_rules_code():
+    """A saved offline run must not be reused after the keyword rules change."""
+    from pathlib import Path
+
+    from promo.runner import sha_bytes
+    from promo.stages import propose
+
+    class Ctx:
+        offline = True
+        params = type("P", (), {"max_props_per_ep": 6})()
+        cfg = type("C", (), {"profile_for": staticmethod(lambda stage: None)})()
+
+    got = propose.inputs(Ctx())
+    from promo import heuristics
+
+    assert got["rules"] == sha_bytes(Path(heuristics.__file__).read_bytes())

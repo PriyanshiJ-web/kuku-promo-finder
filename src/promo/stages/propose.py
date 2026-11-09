@@ -4,13 +4,14 @@ from __future__ import annotations
 
 import asyncio
 from collections import Counter
+from pathlib import Path
 
 from pydantic import BaseModel, Field, model_validator
 
 from promo.heuristics import propose_offline
 from promo.llm.templates import load_template
 from promo.parse.render import compact, est_tokens
-from promo.runner import Ctx
+from promo.runner import Ctx, sha_bytes
 from promo.schema import HookType, Proposal, Show
 from promo.stages.bible import digest
 
@@ -37,7 +38,8 @@ class ProposeOut(BaseModel):
 def inputs(ctx: Ctx) -> dict:
     p = ctx.cfg.profile_for("propose")
     if ctx.offline:
-        return {"offline": True, "max_props": ctx.params.max_props_per_ep, "version": 1}
+        rules = sha_bytes(Path(propose_offline.__code__.co_filename).read_bytes())
+        return {"offline": True, "max_props": ctx.params.max_props_per_ep, "rules": rules}
     return {
         "prompt": load_template("propose").sha,
         "profile": [p.name, p.model, p.extra_body],
