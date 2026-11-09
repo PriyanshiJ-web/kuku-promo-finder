@@ -11,3 +11,5 @@ __pycache__/
 .ruff_cache/
 .venv-win/
 !demo/outputs/
+CLAUDE.md
+docs/handoff-*.md

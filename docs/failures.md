@@ -82,7 +82,7 @@ reading is that the checks are weak where it matters most, at the top.
 - Episodes 6 and 8 produced no proposals at all, 3 of the top 10 end exactly at an episode's end
   (the show's built-in cliffhanger), and the perturbation check shows the judge cannot tell a buried
   hook or an answer-included clip from the original (original preferred 0.25 to 0.44). See
-  docs/handoff-fixes.md for these numbers.
+  eval.md in the raw outputs for these numbers.
 
 ## Update after the cut polish step (code only, no new model calls)
 

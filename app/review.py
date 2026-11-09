@@ -121,7 +121,8 @@ with tab_p:
         types = sorted({p["candidate"]["hook_type"] for p in promos})
         c1, c2, c3 = st.columns([3, 2, 2])
         pick = c1.multiselect("Hook type", types, default=types)
-        top = c2.slider("Show top", 1, len(promos), min(20, len(promos)))
+        n_all = len(promos)
+        top = c2.slider("Show top", 1, n_all, min(20, n_all)) if n_all > 1 else n_all
         hide = c3.checkbox("Hide reviewed")
         rows = [p for p in promos if p["candidate"]["hook_type"] in pick][:top]
         rows = [p for p in rows if not (hide and p["candidate"]["id"] in done)]
@@ -216,6 +217,13 @@ with tab_q:
                 shown = True
                 with st.expander(title, expanded=name == "eval.md"):
                     st.markdown(f.read_text(encoding="utf-8"))
+    if run and (done_q := reviews(run)):
+        top10 = {p["candidate"]["id"] for p in (promos or [])[:10]}
+        seen = [r for k, r in done_q.items() if k in top10]
+        good = sum(1 for r in seen if r["decision"] in ("approve", "trim"))
+        st.markdown(f"**Your review so far:** {len(done_q)} promos reviewed. "
+                    f"Of the top 10, you looked at {len(seen)} and kept {good} (approved or trimmed). "
+                    "This is a quick check by you, not a blind label set.")  # fmt: skip
     fm = ROOT / "docs" / "failures.md"
     if fm.exists():
         with st.expander("Where the tool picks badly", expanded=True):
