@@ -25,7 +25,7 @@ from promo.parse import parse_folder  # noqa: E402
 from promo.parse.render import clip_lines  # noqa: E402
 from promo.schema import Candidate  # noqa: E402
 
-RUN_DIRS = [ROOT / "outputs", ROOT / "demo" / "outputs"]
+RUN_DIRS = [ROOT / "demo" / "outputs", ROOT / "outputs"]  # the demo is listed first, so it is the default
 GATES = {
     "G1": "Length is 20 to 60 s", "G2": "Every cut is clean", "G3": "Hook within 3 s",
     "G_seg": "Segments long enough, in order", "G4": "Ends unresolved", "G5": "Makes sense alone",
