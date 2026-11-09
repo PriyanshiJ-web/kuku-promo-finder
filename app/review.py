@@ -35,6 +35,16 @@ GATES = {
 }  # fmt: skip
 
 st.set_page_config(page_title="Promo Finder", layout="wide")
+st.markdown(
+    """<style>
+    .stMarkdown h1, [data-testid="stHeading"] h1 { font-size: 1.45rem; padding: 0.3rem 0 0.2rem; }
+    .stMarkdown h2, [data-testid="stHeading"] h2 { font-size: 1.2rem; padding: 0.3rem 0 0.15rem; }
+    .stMarkdown h3, [data-testid="stHeading"] h3 { font-size: 1.05rem; padding: 0.3rem 0 0.1rem; }
+    .stMarkdown h4 { font-size: 0.95rem; padding: 0.2rem 0 0.1rem; }
+    .stMarkdown p, .stMarkdown li { font-size: 0.95rem; }
+    </style>""",
+    unsafe_allow_html=True,
+)
 
 
 def mmss(s: float) -> str:
