@@ -67,20 +67,21 @@ code { font-size: 7.8pt; }
 <p>Measured on the 50-episode pack (103 minutes): <b>147 model calls, 426k tokens (390k in, 36k out), about 12 minutes, $0</b> on free tiers. At paid Gemini prices (<span class="small">ai.google.dev/gemini-api/docs/pricing, checked 9 Nov 2026</span>) that is <b>$0.21 per show</b> with every step on Gemini 3.5 Flash-Lite ($0.30 in, $2.50 out per 1M tokens), <b>$0.32</b> with Gemini 3.6 Flash on the three long-context steps at its promotional $0.75 / $3.75 (to 31 Dec 2026), and <b>$0.52</b> at its list price $1.50 / $7.50. Multiply by shows released: at 10 shows a week that is about $2 to $5 a week, at 50 shows about $10 to $26. (I do not know the real weekly count, so the cost is per show times that number.) Shows are independent, so they run in parallel; the limit on free tiers is requests (5 to 15 per minute, 20 to 500 per day per model), not tokens, and a paid key lifts it. Changing one prompt reruns only the stages after it. The editor reviews about 10 clips a show instead of watching 50 episodes.</p>
 
 <h2>How I know it is good, and where it is not</h2>
-<p>The tool's top 10 against baselines, each compared pair by pair by an LLM judge in both orders (win = 1, split decision = 0.5; 10 pairs each, so one pair is 0.1). From <code>outputs/duke/eval.json</code>.</p>
+<p>The tool's top 10 against baselines, each compared pair by pair by an LLM judge in both orders (win = 1, split decision = 0.5; 10 pairs each, so one pair is 0.1). Run with two judge models: <code>eval_gemini_judge.json</code>, <code>eval_groq_judge.json</code>.</p>
 <div class="cols"><div>
-<table><tr><th>Baseline</th><th class="n">Tool win rate</th><th class="n">Split</th></tr>
-<tr><td>random 45 s windows</td><td class="n">0.85</td><td class="n">0.1</td></tr>
-<tr><td>last 45 s of an episode</td><td class="n">0.75</td><td class="n">0.3</td></tr>
-<tr><td>offline keyword heuristic</td><td class="n">0.70</td><td class="n">0.4</td></tr>
-<tr><td>one prompt over the whole show</td><td class="n">0.65</td><td class="n">0.1</td></tr></table>
+<table><tr><th>Baseline</th><th class="n">Tool win, Gemini judge</th><th class="n">Tool win, Groq judge</th></tr>
+<tr><td>random 45 s windows</td><td class="n">0.85</td><td class="n">0.85</td></tr>
+<tr><td>last 45 s of an episode</td><td class="n">0.75</td><td class="n">0.75</td></tr>
+<tr><td>offline keyword heuristic</td><td class="n">0.70</td><td class="n">0.55</td></tr>
+<tr><td>one prompt over the whole show</td><td class="n">0.65</td><td class="n">0.40</td></tr></table>
 </div><div>
 <table><tr><th>Perturbation: original preferred</th><th class="n">early</th><th class="n">late</th></tr>
 <tr><td>gemini-3.5-flash-lite (structured)</td><td class="n">0.35</td><td class="n">0.36</td></tr>
 <tr><td>gpt-oss-120b (structured)</td><td class="n">0.25</td><td class="n">0.44</td></tr>
-<tr><td>gemini-3.5-flash-lite (first judge)</td><td class="n">0.35</td><td class="n">0.44</td></tr></table>
+<tr><td>gemini-3.5-flash-lite (first judge)</td><td class="n">0.35</td><td class="n">0.44</td></tr>
+<tr><td>gpt-oss-120b, rerun after the cut polish</td><td class="n">0.30</td><td class="n">0.44</td></tr></table>
 </div></div>
-<p><b>The tool beats the baselines on this judge but the judge fails its own check:</b> given a clip and a copy with the hook buried 8 s earlier or the answer shown, it should prefer the original more than 80% of the time and prefers it 25 to 44%, with both models and both prompts. So the judge's ranking cannot be trusted to punish a buried hook or a late cut, and the win rates measure agreement with an LLM, not with an editor. Position bias fell from 39.6% to 20.8% of pairs after splitting the judge into three questions. Swapping the proposing and judging models keeps only 2 of the top 10. Honest limits: no hand labels, text only, 10 pairs per row.</p>
+<p><b>The win is clear against random windows and the last 45 s, but not against the one-prompt baseline:</b> 0.65 with one judge and 0.40 with the other, so I cannot claim to beat it. <b>The judge also fails its own check:</b> given a clip and a copy with the hook buried 8 s earlier or the answer shown, it should prefer the original more than 80% of the time and prefers it 25 to 44%, with both models and both prompts (the rerun after the cut polish is 30 and 44%). So the judge's ranking cannot be trusted to punish a buried hook or a late cut, and the win rates measure agreement with an LLM, not with an editor. Position bias fell from 39.6% to 20.8% of pairs after splitting the judge into three questions. Swapping the proposing and judging models keeps only 2 of the top 10. Honest limits: no hand labels, text only, 10 pairs per row.</p>
 <p><b>Where it picks badly</b> (<code>docs/failures.md</code>, found with code checks and the tool's own ratings, not by watching):</p>
 <ul>
 <li><b>Answer inside the clip:</b> 3 promos contained the line that answers their own question and the cold view still called them open-ended. A final code step now cuts the end before that line (2 fixed) or flags it G8 and sends it to the bottom (1). It only knows the bible's 5 questions, so other early answers are not caught.</li>
