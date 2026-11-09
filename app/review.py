@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -74,6 +75,15 @@ def screenplay_folder(run: Path) -> str:
 @st.cache_resource(show_spinner="Reading the screenplay...")
 def parsed(folder: str):
     return parse_folder(folder)
+
+
+def split_failures(text: str) -> tuple[str, str]:
+    """Move the '## Failures' section of a report out of the text, so it can be collapsed."""
+    m = re.search(r"^## Failures\s*\n(.*?)(?=^## |\Z)", text, flags=re.S | re.M)
+    if not m:
+        return text, ""
+    body = m.group(1).strip()
+    return text[: m.start()] + text[m.end():], ("" if body in ("", "- none") else body)
 
 
 def reviews(run: Path) -> dict[str, dict]:
@@ -214,6 +224,7 @@ with tab_h:
 
 with tab_q:
     shown = False
+    failed: list[str] = []
     if run:
         for name, title in (
             ("audit.md", "Defect audit (rule-based, no model)"),
@@ -223,8 +234,10 @@ with tab_q:
             f = run / name
             if f.exists():
                 shown = True
+                main, fails = split_failures(f.read_text(encoding="utf-8"))
+                failed += [fails] if fails else []
                 with st.expander(title, expanded=name != "report.md"):
-                    st.markdown(f.read_text(encoding="utf-8"))
+                    st.markdown(main)
     if run and (done_q := reviews(run)):
         top10 = {p["candidate"]["id"] for p in (promos or [])[:10]}
         seen = [r for k, r in done_q.items() if k in top10]
@@ -236,6 +249,11 @@ with tab_q:
     if fm.exists():
         with st.expander("Where the tool picks badly", expanded=True):
             st.markdown(fm.read_text(encoding="utf-8"))
+    if failed:
+        with st.expander("Failed model calls during the runs (closed by default)", expanded=False):
+            st.caption("Provider errors such as a temporary outage. Failed calls are retried or "
+                       "sent to a fallback model, and they are listed here for honesty.")  # fmt: skip
+            st.markdown("\n\n".join(failed))
     if not shown:
         st.caption("This run has no eval file. `promo eval --show NAME` creates one.")
 
