@@ -17,8 +17,11 @@ table { border-collapse: collapse; width: 100%; margin: 1mm 0 1.6mm; font-size: 
 th, td { border: 0.5pt solid #bbb; padding: 0.6mm 1.4mm; text-align: left; vertical-align: top; }
 th { background: #f1f1f1; }
 td.n, th.n { text-align: right; white-space: nowrap; }
-.cols { display: flex; gap: 5mm; }
+.cols { display: flex; gap: 4mm; break-inside: avoid; }
 .cols > div { flex: 1; }
+.cols > div:first-child { flex: 1.15; }
+table, tr { break-inside: avoid; }
+.cols td:first-child { white-space: nowrap; }
 .small { font-size: 7.4pt; color: #444; }
 svg { width: 100%; height: auto; display: block; margin: 1mm 0; }
 code { font-size: 7.8pt; }
@@ -70,7 +73,7 @@ code { font-size: 7.8pt; }
 <h2>Cost and scale</h2>
 <p>Measured on the 50-episode pack (103 minutes): <b>147 model calls, 426k tokens (390k in, 36k out), about 12 minutes, $0</b> on free tiers. At paid Gemini prices (<span class="small">ai.google.dev/gemini-api/docs/pricing, checked 9 Nov 2026</span>) one show costs about <b>$0.21</b> with every step on Gemini 3.5 Flash-Lite ($0.30 in, $2.50 out per 1M tokens). It costs about <b>$0.32</b> with Gemini 3.6 Flash on the three long-context steps (promotional price $0.75 in, $3.75 out, until 31 Dec 2026), and about <b>$0.52</b> at its list price ($1.50 in, $7.50 out). Multiply by the number of shows: 10 shows a week cost about $2 to $5 a week, and 50 shows about $10 to $26. (I do not know the real weekly count.) On free tiers the limit is requests (5 to 15 per minute and 20 to 500 per day per model), not tokens, and a paid key removes it. Changing one prompt reruns only the stages after it. The editor reviews about 10 clips per show instead of watching 50 episodes. For a 200-episode show, <code>promo estimate</code> predicts about 540 calls and 1.6M tokens, so the default limit of 400 calls in <code>pipeline.yaml</code> has to be raised. The parser is tested on 7 format variants (for example Windows line endings, lower-case headers and a missing scene end).</p>
 
-<h2>How I know it is good, and where it is not</h2>
+<h2 style="break-after: avoid;">How I know it is good, and where it is not</h2>
 <p>I compared the tool's top 10 with four baselines. For each baseline, an LLM judge compared the clips pair by pair, once in each order. A win counts 1 and a split decision counts 0.5. There are 10 pairs per baseline, so one pair moves a number by 0.1. I ran this with two judge models, on the top 10 as it stood before the last polish change (one clip differs). The files are <code>eval_gemini_judge.json</code> and <code>eval_groq_judge.json</code>.</p>
 <div class="cols"><div>
 <table><tr><th>Baseline</th><th class="n">Tool win, Gemini judge</th><th class="n">Tool win, Groq judge</th></tr>
@@ -115,5 +118,5 @@ code { font-size: 7.8pt; }
 <tr><td>Raw outputs (Google Drive)</td><td>&nbsp;</td></tr>
 <tr><td>Walkthrough video</td><td>&nbsp;</td></tr>
 </table>
-<p class="footer">Priyanshi Jain &nbsp;|&nbsp; Roll number 220823 &nbsp;|&nbsp; Aerospace Engineering</p>
+<p class="footer">Priyanshi Jain &nbsp;|&nbsp; Roll number 220823 &nbsp;|&nbsp; B.Tech, Aerospace Engineering</p>
 </body></html>
