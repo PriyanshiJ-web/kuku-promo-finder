@@ -96,6 +96,40 @@ def split_failures(text: str) -> tuple[str, str]:
     return text[: m.start()] + text[m.end():], ("" if body in ("", "- none") else body)
 
 
+def show_judge_comparison(run: Path, failed: list[str]) -> bool:
+    """One table with the judge models side by side (as in the solution doc)."""
+    found = [(label, read_json(run / fn)) for label, fn in
+             (("Gemini judge", "eval_gemini_judge.json"), ("Groq judge", "eval_groq_judge.json"))]  # fmt: skip
+    found = [(label, d) for label, d in found if d]
+    if not found and (d := read_json(run / "eval.json")):
+        found = [("Judge model", d)]
+    if not found:
+        return False
+    names = {"random_45": "Random 45 s windows", "last_45": "Last 45 s of an episode",
+             "heuristic": "Offline keyword heuristic", "single_prompt": "One prompt over the whole show"}  # fmt: skip
+    base = [{"Baseline": nice, **{label: d["win_rate_vs_baselines"].get(key, {}).get("left_win_rate")
+                                   for label, d in found}} for key, nice in names.items()]  # fmt: skip
+    pert = [{"Test": f"Judge prefers the original when the {what}", **{
+        label: d["perturbation"].get(kind, {}).get("original_preferred") for label, d in found}}
+        for kind, what in (("early", "hook is buried 8 s earlier"), ("late", "answer is shown"))]  # fmt: skip
+    with st.expander("Comparison with baselines, judge models side by side", expanded=True):
+        st.markdown("**Tool win rate against each baseline** (top 10 against top 10, judged in both "
+                    "orders; a win is 1, a split decision 0.5, 10 pairs each)")  # fmt: skip
+        st.dataframe(pd.DataFrame(base), hide_index=True)
+        st.markdown("**Does the judge notice a worse clip?** (it should prefer the original more "
+                    "than 80% of the time)")  # fmt: skip
+        st.dataframe(pd.DataFrame(pert), hide_index=True)
+        d0 = found[0][1]
+        st.caption(f"Diversity of the top 10 (1 is all different): {d0.get('diversity')}. "
+                   f"Hook types: {d0.get('spread', {}).get('hook_types')}. "
+                   "Precision against hand labels: not measured.")  # fmt: skip
+        for label, d in found:
+            st.caption(f"{label}: {d.get('judge_model', 'unknown')}")
+    for _, d in found:
+        failed += [f"- {x['error']}" for x in d.get("failures", [])]
+    return True
+
+
 def reviews(run: Path) -> dict[str, dict]:
     f = run / "review.csv"
     if not f.exists():
@@ -236,24 +270,19 @@ with tab_q:
     shown = False
     failed: list[str] = []
     if run:
-        for name, title in (
-            ("audit.md", "Defect audit (rule-based, no model)"),
-            ("eval_gemini_judge.md", "Comparison with baselines, Gemini judge"),
-            ("eval_groq_judge.md", "Comparison with baselines, Groq judge"),
-            ("eval.md", "Comparison with baselines (judge model)"),
-            ("report.md", "Run report"),
-        ):
+        for name, title in (("audit.md", "Defect audit (rule-based, no model)"),
+                            ("report.md", "Run report")):  # fmt: skip
             f = run / name
-            if name == "eval.md" and (run / "eval_gemini_judge.md").exists():
-                continue  # eval.md is a copy of the Gemini-judge file, do not show it twice
             if f.exists():
                 shown = True
                 main, fails = split_failures(f.read_text(encoding="utf-8"))
                 failed += [fails] if fails else []
                 main = re.sub(r"^(#{1,2}) ", lambda m: "#" * (len(m.group(1)) + 2) + " ", main,
                               flags=re.M)  # smaller headings inside the expander
-                with st.expander(title, expanded=name in ("audit.md", "eval_gemini_judge.md")):
+                with st.expander(title, expanded=name == "audit.md"):
                     st.markdown(main)
+            if name == "audit.md":  # the judge comparison goes right after the audit
+                shown |= show_judge_comparison(run, failed)
     if run and (done_q := reviews(run)):
         top10 = {p["candidate"]["id"] for p in (promos or [])[:10]}
         seen = [r for k, r in done_q.items() if k in top10]
