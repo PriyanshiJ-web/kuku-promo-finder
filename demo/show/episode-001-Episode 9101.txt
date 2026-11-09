@@ -1,0 +1,110 @@
+EPISODE NUMBER: Episode 1
+EPISODE LOGLINE: Mira returns to Saltgate harbor to claim her late father's boatyard.
+CONTINUITY NOTES: Invented demo show, not Kuku content.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. SALTGATE HARBOR - NIGHT
+Scene start: 00:00.00
+Scene end: 01:11.20
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:10.14)
+Close-up on the speaker.
+
+**ACTION:**
+Start: (00:00.50) | End: (00:04.86)
+Mira steps off the ferry with one battered suitcase.
+
+**MIRA (Calm, Wary):**
+Start: (00:05.26) | End: (00:09.94)
+"Ten years, and the harbor lamp is still out."
+
+**CAMERA:**
+Start: (00:10.14) | End: (00:19.67)
+Slow push toward the lantern.
+
+**TOBIAS (Guarded):**
+Start: (00:10.34) | End: (00:14.46)
+"Nobody told us you were coming back."
+
+**MIRA (Firm):**
+Start: (00:14.86) | End: (00:19.47)
+"My father's will says the boatyard is mine."
+
+**CAMERA:**
+Start: (00:19.67) | End: (00:28.29)
+Over-the-shoulder, tense.
+
+**HARBOR MASTER VOSS (Cold):**
+Start: (00:19.87) | End: (00:24.27)
+"Your father owed this town a great deal."
+
+**MIRA (Angry):**
+Start: (00:24.67) | End: (00:28.09)
+"He owed you nothing, Voss."
+
+**CAMERA:**
+Start: (00:28.29) | End: (00:39.05)
+Low angle on the warehouse door.
+
+**ACTION:**
+Start: (00:28.49) | End: (00:33.63)
+Voss slaps the will out of Mira's hands and it scatters across the wet planks.
+
+**MIRA (Shocked):**
+Start: (00:34.03) | End: (00:38.85)
+"You just struck me in front of the whole dock!"
+
+**CAMERA:**
+Start: (00:39.05) | End: (00:48.23)
+Quick cut to the water.
+
+**HARBOR MASTER VOSS (Smiling):**
+Start: (00:39.25) | End: (00:44.07)
+"Then go ahead and tell them who owns the dock."
+
+**TOBIAS (Torn):**
+Start: (00:44.47) | End: (00:48.03)
+"Mira, leave tonight. Please."
+
+**CAMERA:**
+Start: (00:48.23) | End: (00:54.51)
+Wide shot of the harbor.
+
+**MIRA (Defiant):**
+Start: (00:48.43) | End: (00:51.71)
+"I am not going anywhere."
+
+**SOUND FX:**
+Start: (00:52.11) | End: (00:54.31)
+A foghorn sounds twice across the water.
+
+**CAMERA:**
+Start: (00:54.51) | End: (01:02.01)
+Close-up on the speaker.
+
+**ORLA (Whispering):**
+Start: (00:54.71) | End: (00:58.97)
+"Come to the chapel at midnight. Alone."
+
+**MIRA (Confused):**
+Start: (00:59.37) | End: (01:01.81)
+"Who are you?"
+
+**CAMERA:**
+Start: (01:02.01) | End: (01:11.20)
+Slow push toward the lantern.
+
+**ORLA (Urgent):**
+Start: (01:02.21) | End: (01:07.17)
+"The woman who knows how your father really died."
+
+**SOUND FX:**
+Start: (01:07.57) | End: (01:09.77)
+The lantern shatters. A sharp cliffhanger sting.
+
+--- SCRIPT END ---

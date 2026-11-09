@@ -1,0 +1,23 @@
+# Stage to profile mapping and tunable parameters (spec section 4).
+# Override at runtime with: --profile-map stage=profile,stage=profile
+stages:
+  bible: gemini_flash
+  propose: gemini_flash
+  montage: gemini_flash
+  coldview: gemini_lite
+  judge: gemini_lite
+params:
+  min_len: 20
+  max_len: 60
+  hook_window: 3.0
+  min_segment: 3.0
+  free_eps: 10
+  chunk_eps: 5
+  max_props_per_ep: 6
+  coldview_batch: 6
+  top_k_pairwise: 24
+  swiss_rounds: 4
+  mmr_lambda: 0.7
+  top_n_report: 20
+  max_calls: 400
+  max_tokens: 2000000

@@ -1,0 +1,106 @@
+EPISODE NUMBER: Episode 4
+EPISODE LOGLINE: The will burns, but Orla reveals a copy and Venn changes sides.
+CONTINUITY NOTES: Invented demo show, not Kuku content.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. SALTGATE HARBOR - NIGHT
+Scene start: 00:00.00
+Scene end: 01:06.40
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:09.01)
+Low angle on the warehouse door.
+
+**ACTION:**
+Start: (00:00.50) | End: (00:05.13)
+The burning paper drifts to the floor and Mira stamps it out.
+
+**MIRA (Gasping):**
+Start: (00:05.53) | End: (00:08.81)
+"It is only a blank page!"
+
+**CAMERA:**
+Start: (00:09.01) | End: (00:17.70)
+Quick cut to the water.
+
+**HARBOR MASTER VOSS (Furious):**
+Start: (00:09.21) | End: (00:13.54)
+"Impossible. I took the real one myself."
+
+**ORLA (Triumphant):**
+Start: (00:13.94) | End: (00:17.50)
+"You took the decoy, husband."
+
+**CAMERA:**
+Start: (00:17.70) | End: (00:27.65)
+Wide shot of the harbor.
+
+**HARBOR MASTER VOSS (Stunned):**
+Start: (00:17.90) | End: (00:21.32)
+"Orla? You would betray me?"
+
+**ORLA (Steady):**
+Start: (00:21.72) | End: (00:27.45)
+"I stopped being your wife the day you killed Mira's father."
+
+**CAMERA:**
+Start: (00:27.65) | End: (00:36.88)
+Close-up on the speaker.
+
+**ACTION:**
+Start: (00:27.85) | End: (00:32.09)
+Venn draws his sword and turns it on the guards.
+
+**CAPTAIN VENN (Resolute):**
+Start: (00:32.49) | End: (00:36.68)
+"I have served a murderer long enough."
+
+**CAMERA:**
+Start: (00:36.88) | End: (00:44.77)
+Slow push toward the lantern.
+
+**HARBOR MASTER VOSS (Raging):**
+Start: (00:37.08) | End: (00:39.66)
+"Kill them all!"
+
+**ACTION:**
+Start: (00:40.06) | End: (00:44.57)
+The guards hesitate, then lower their weapons one by one.
+
+**CAMERA:**
+Start: (00:44.77) | End: (00:53.46)
+Over-the-shoulder, tense.
+
+**MIRA (Quiet):**
+Start: (00:44.97) | End: (00:49.65)
+"It is over, Voss. The town heard everything."
+
+**HARBOR MASTER VOSS (Cornered):**
+Start: (00:50.05) | End: (00:53.26)
+"You think you have won?"
+
+**CAMERA:**
+Start: (00:53.46) | End: (01:02.58)
+Low angle on the warehouse door.
+
+**ACTION:**
+Start: (00:53.66) | End: (00:57.72)
+Voss pulls a pistol and aims it at Tobias.
+
+**HARBOR MASTER VOSS (Cold):**
+Start: (00:58.12) | End: (01:02.38)
+"Give me the real will, or my son dies."
+
+**CAMERA:**
+Start: (01:02.58) | End: (01:06.40)
+Quick cut to the water.
+
+**SOUND FX:**
+Start: (01:02.78) | End: (01:04.98)
+A single gunshot rings out. A cliffhanger sting.
+
+--- SCRIPT END ---

@@ -1,0 +1,71 @@
+# Assumptions
+
+- [phase 1] Line IDs are assigned after a stable sort of blocks by start time, so IDs ascend with time within an episode - tracks overlap in the files, and time order reads best in prompts.
+- [phase 1] A block whose timestamp line is unusable is skipped and counted in lines_missing_time, and it lowers coverage - it cannot be placed on the timeline.
+- [phase 1] Voice markers O.S., Off-screen and V.O. in a tag are stored in Line.voice, any other parenthetical is treated as emotions.
+- [phase 1] Token estimates are ceil(chars/4) over the rendered prompt text. Full includes CAMERA lines, compact does not. These come out lower than the raw-file size because the render collapses the "Start | End" lines into one short time stamp.
+- [phase 1] Two-part times (m:ss) are minutes and seconds, three-part times are h:mm:ss.
+- [phase 1] A line is counted out_of_scene when its start is more than 0.5 s outside the scene's start or end (when present).
+- [phase 1] Planned-call counts in `promo estimate` are upper bounds (coldview assumes every proposal yields tight and loose variants).
+- [phase 2] Limiter is a sliding 60 s window (rpm and tpm) plus a semaphore for concurrency - simpler to test with a fake clock than a token bucket, same guarantee. rpd is stored in the profile but not enforced, the budget guard (max_calls) covers daily spend.
+- [phase 2] Token estimate for the tpm limiter is input chars/4 plus half of max_tokens - the real output length is unknown before the call.
+- [phase 2] Retry covers 408, 429, 5xx and connection errors, 5 attempts with full jitter (cap 30 s) and Retry-After honoured. Other 4xx fail fast and move to the fallback profile.
+- [phase 2] The fallback profile is tried once (with its own 5 attempts), and is never chained further.
+- [phase 2] Cache hits are logged with 0 tokens and 0 cost. A fallback result is cached under the fallback's key, so a rerun tries the primary again.
+- [phase 2] The repair call is logged under prompt_name "<name>:repair", validation failures are logged as ok=false lines that do not count toward the call budget. Validation errors are logged without input values, so no model or script text reaches the log.
+- [phase 2] The budget guard counts calls and tokens made by the current process only.
+- [phase 2] Only primary profiles are checked for keys and FILL_ME before a run, a missing fallback key surfaces as a recorded failure.
+- [phase 2] Profiles accept "env:NAME" for base_url and model so the custom profile needs no YAML edits. The custom profile ships with json_mode false because custom endpoints often reject response_format.
+- [phase 2] The OpenAI SDK's own retries are disabled (max_retries=0) so all retry and ledger logic lives in one place.
+- [phase 2] Prompt templates are one user message, no system message.
+- [phase 2 review] Only schema-validated replies are cached (first reply or repaired reply). A cache hit is therefore always valid output.
+- [phase 2 review] A reply cut off by max_tokens (finish_reason length) is retried once with max_tokens doubled, capped at the profile's max_output_tokens, without the repair prompt and without moving to a fallback profile. If already at the cap it fails.
+- [phase 2 review] Provider error bodies are never stored or logged. Only a sanitized code is kept: daily_quota (Groq "per day", TPD or RPD, Gemini quota ids with PerDay), invalid_json (Groq json_validate_failed), or the provider's short error code, else the HTTP status phrase.
+- [phase 2 review] daily_quota marks the profile exhausted for the rest of the process: no retries, no further calls, straight to the next fallback. When every profile is exhausted the call fails and is recorded.
+- [phase 2 review] A provider invalid_json error has no reply text to echo, so the repair resends the same prompt plus "Return ONLY valid JSON." with json mode off.
+- [phase 2 review] 429 backoff uses Retry-After, else the Gemini retryDelay from the body, else a 2 s floor.
+- [phase 2 review] The limiter estimate is input tokens plus max_tokens, replaced by the real usage after the call. A rejected call settles to 0 tokens. max_tokens is a required argument everywhere, so small calls never reserve the profile maximum.
+- [phase 2 review] Daily usage counts real provider requests (cache hits and annotation lines excluded) since local midnight in the profile's reset_tz, Pacific for Gemini and UTC otherwise, summed over all outputs/*/run_log.jsonl. `promo estimate` only reports it, nothing is blocked.
+- [phase 2 review] Planned token counts in `promo estimate` are rough upper bounds (clip transcript assumed about 40 s, tight and loose variants for every proposal).
+- [phase 2 review] The single groq profile is replaced by groq_cold and groq_judge (separate model quotas), each falling back to the other and then to gemini_flash. The review text was cut off at "gemini_fl", read as gemini_flash.
+- [phase 2 review] Review items 4, 6, 7 and 8 arrived partly truncated. Gaps were filled with the simplest reading, listed above.
+- [phase 3] Stages are parse, bible, propose, montage, each with its own artifact in outputs/<show>/. Montage is its own stage so it has its own profile, hash and failure list.
+- [phase 3] The parse stage always parses in memory (under a second), the artifact is for inspection. The stage hash covers every input file's sha256, so any edit reruns everything.
+- [phase 3] Stage hash = prompts' sha + profile name, model and extra_body + stage params + upstream artifact shas. Artifacts hold no timestamps, so a rerun from cache is byte-identical and downstream stages skip.
+- [phase 3] `--force STAGE` ignores the skip for that stage only. `promo stage X` loads upstream artifacts and forces X.
+- [phase 3] The bible alias map is applied by code exactly as the model wrote it. Code only normalises case and spacing, drops aliases that are not real speaker tags, and lets the first character win an alias conflict. Descriptive tags are never resolved by string rules.
+- [phase 3] Open questions are renumbered 0..n-1 by code, because the proposer refers to them by number. Questions raised at an unknown line are dropped, an unknown resolved_at becomes null.
+- [phase 3] The bible failure fallback is one character per raw speaker tag, marked degraded.
+- [phase 3] The lookahead episode is the next episode number in the full show, even when it is outside --episodes.
+- [phase 3] Proposal validation drops: unknown_id, outside_chunk, cross_episode, bad_order (by line index), over_limit (max_props_per_ep, keeping the highest confidence). Beats are dropped for unknown IDs or when outside the chunk. Length is not checked here, build does that.
+- [phase 3] The propose JSON asks for a span_seconds self-check field. It is ignored by code, it exists only to make the model compute the span.
+- [phase 3] Replies that are a bare JSON list are accepted for propose and montage.
+- [phase 3] Daily usage ignores failed attempts that were never served (connection errors, 5xx), they do not use quota. The remaining-quota table at the start of a run lists primary profiles only, so fallback usage is not shown there.
+- [phase 4] Variants (tight and loose) of one proposal are never deduplicated against each other, only against candidates from other sources. Otherwise the loose variant would always lose to the tight one and the ranker would never get a choice.
+- [phase 4] The loose variant moves the first start one cut earlier (only if the hook stays within hook_window) and the last end one cut later (only if no dialogue is added), and is skipped when it equals the tight variant or would exceed max_len.
+- [phase 4] Montage segments are snapped with cut_at_or_before for the start and cut_at_or_after for the end. If the hook is more than hook_window after the first segment's start, that start is re-snapped with the single-clip window rule.
+- [phase 4] Montages must be chronological by (episode, start) and may not overlap, there is no "reverse order" flag in the proposal schema, so a reversed order is always dropped as not_chronological.
+- [phase 4] Gates are split into two stages: gates (hard code gates G1, G2, G3, G_seg and soft code gates G6, G7) and coldview (the LLM gates G4, G5 and rubric, phase 5).
+- [phase 4] The build stage hash includes the sha of build.py, so a rule change reruns build and everything after it.
+- [phase 4] A dropped too_long clip is one whose cliff line cannot sit inside a second segment of at most max_len minus the first segment. No third segment is attempted.
+- [phase 5] The cold-view step is its own stage (coldview) after the code gates, and only candidates that pass every hard code gate are shown to the model, which saves calls.
+- [phase 5] Clips are shuffled with a deterministic seed (hash of the candidate ids), labelled A, B, C and so on, six per call. Skipped clips are retried once in a second pass, a clip still missing fails G4 and G5 with "no cold view".
+- [phase 5] Rubric scores 1 to 5 are scaled to 0 to 1 as (x - 1) / 4 before weighting, so a 1 scores nothing and a 5 scores full marks.
+- [phase 5] Pointwise = 0.4 hook + 0.25 curiosity + 0.2 clarity + 0.15 proposer confidence, minus 0.1 for failing G6 and 0.15 for failing G7, plus 0.05 when the hook is in a free episode (free_eps, default 10). Free episodes are an assumption.
+- [phase 5] promos.csv has one row per segment. The hook and cliffhanger columns hold the model's short paraphrase or quote of the moment.
+- [phase 5] For real runs the three gemini_flash stages were mapped to gemini_flash_b with --profile-map, because gemini-3.8-flash failed every attempt (connection errors and 503) during development. gemini_flash_b and gemini_flash_c now also list each other and gemini_lite as fallbacks so a daily quota hit does not stop a run.
+- [phase 5] Free-tier data handling: prompts and clips are sent to the configured providers, whose free tiers may use traffic for training. The brief allows AI tools, this is noted here and in the README.
+- [phase 6] Top 24 candidates by pointwise score go to the Swiss rounds (4 rounds, both orders per pair, no rematches, a bye when the count is odd). Final = 0.7 * min-max normalised log Bradley-Terry strength + 0.3 * pointwise. Candidates below the top 24 get pointwise - 1 and are ordered after them.
+- [phase 6] Bradley-Terry uses MM updates with a pseudo game against a phantom opponent of strength 1 (a 0.5 pseudo-win), so undefeated and winless clips stay finite.
+- [phase 6] MMR runs separately inside the top-k group and the rest, so a candidate outside the top 24 can never overtake one inside it. Similarity = min(1, max(IoU, Jaccard) + 0.3 same hook episode + 0.2 same hook type).
+- [phase 6] A split between the two orders is scored 0.5 each and counts toward the position-bias rate. If only one order produced a verdict it decides, if neither did the pair scores 0.5 and is not used by Bradley-Terry.
+- [phase 6] post_first_reason is the judge reason (from clean wins only, split decisions are ignored) that shares the most words with the other reasons for that clip, no extra call.
+- [phase 7] Offline mode: bible is one character per speaker tag, proposals come from a keyword and emotion lexicon (a hook line, a cliffhanger at the last line within 45 s, hooks at least 10 s apart), confidence is the lexicon density of the window plus 0.15 in the last 30 s. There is no cold view and no pairwise judging, but MMR diversity still orders the list.
+- [phase 7] The eval code lives in the package src/promo/evaluation (baselines, perturb, metrics, run) instead of a top-level eval/ folder, so it is importable. eval/labels/template.csv stays at the top level. labels.csv is read if present and never created.
+- [phase 7] Baselines have 10 clips each: random_45 (seeded windows), last_45 (last 45 s of 10 seeded episodes), the offline heuristic, and single_prompt (one call over the whole compact show). Win rate pairs the tool's top 10 with each baseline's list by rank, both orders.
+- [phase 7] Perturbations: early moves the first segment's start 8 s earlier (snapped), late extends the last segment's end past the next two dialogue lines (snapped).
+- [phase 8] --out-suffix writes a run to outputs/<show>__<suffix>/. The swap overlap metric counts a clip as matched when its time IoU with a clip in the other top 10 is at least 0.5.
+- [fixes] The report stage keeps only the highest-final variant of each source proposal (ties go to the better rank) and renumbers ranks, rank.json still holds every variant for audit. The eval reads promos.json, so it also sees one variant per moment.
+- [fixes] The single_prompt baseline is saved in outputs/<show>/eval_baselines.json and reused. A first reply that fails validation is never cached, so asking again can return a different clip set, which is why two eval runs once disagreed (10 clips in one, 9 in the other).
+- [fixes] The pairwise judge returns three votes (hook, ending, clarity) per order, the winner is the majority and the hook vote breaks a tie. The opening block holds lines that start in the first 3.0 s, the last-lines block holds lines on screen in the final 5 s. The reason is kept only for clean wins, as before.
+- [fixes] The perturbation-only diagnostic uses the same top 10 and the same perturbed clips as the main eval, writes to its own files and records the judge profile and model.

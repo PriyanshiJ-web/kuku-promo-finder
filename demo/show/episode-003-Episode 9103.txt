@@ -1,0 +1,106 @@
+EPISODE NUMBER: Episode 3
+EPISODE LOGLINE: Mira and Tobias race through the storm to the lighthouse.
+CONTINUITY NOTES: Invented demo show, not Kuku content.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. SALTGATE HARBOR - NIGHT
+Scene start: 00:00.00
+Scene end: 01:06.50
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:09.61)
+Over-the-shoulder, tense.
+
+**ACTION:**
+Start: (00:00.50) | End: (00:04.89)
+Rain hammers the cliff path as Mira and Tobias climb.
+
+**MIRA (Furious):**
+Start: (00:05.29) | End: (00:09.41)
+"You knew. All these years, you knew!"
+
+**CAMERA:**
+Start: (00:09.61) | End: (00:18.93)
+Low angle on the warehouse door.
+
+**TOBIAS (Ashamed):**
+Start: (00:09.81) | End: (00:14.49)
+"He made me swear. He said you would be safe."
+
+**MIRA (Bitter):**
+Start: (00:14.89) | End: (00:18.73)
+"Safe? He took everything we had."
+
+**CAMERA:**
+Start: (00:18.93) | End: (00:28.35)
+Quick cut to the water.
+
+**ACTION:**
+Start: (00:19.13) | End: (00:23.91)
+Tobias slips and Mira catches his collar at the edge of the cliff.
+
+**TOBIAS (Gasping):**
+Start: (00:24.31) | End: (00:28.15)
+"Let go or you will fall with me!"
+
+**CAMERA:**
+Start: (00:28.35) | End: (00:38.73)
+Wide shot of the harbor.
+
+**MIRA (Fierce):**
+Start: (00:28.55) | End: (00:33.44)
+"I just got a brother back. I am not losing him."
+
+**ACTION:**
+Start: (00:33.84) | End: (00:38.53)
+She hauls him up. They reach the lighthouse door, already open.
+
+**CAMERA:**
+Start: (00:38.73) | End: (00:47.49)
+Close-up on the speaker.
+
+**MIRA (Whispering):**
+Start: (00:38.93) | End: (00:42.07)
+"Someone has been here."
+
+**HARBOR MASTER VOSS (Calm):**
+Start: (00:42.47) | End: (00:47.29)
+"Of course I have. I have been waiting for you."
+
+**CAMERA:**
+Start: (00:47.49) | End: (00:55.67)
+Slow push toward the lantern.
+
+**MIRA (Horrified):**
+Start: (00:47.69) | End: (00:51.04)
+"Where is the second will?"
+
+**ACTION:**
+Start: (00:51.44) | End: (00:55.47)
+Voss holds the paper over the lamp flame.
+
+**CAMERA:**
+Start: (00:55.67) | End: (01:02.68)
+Over-the-shoulder, tense.
+
+**HARBOR MASTER VOSS (Cruel):**
+Start: (00:55.87) | End: (00:59.71)
+"Say goodbye to your inheritance."
+
+**TOBIAS (Shouting):**
+Start: (01:00.11) | End: (01:02.48)
+"Father, no!"
+
+**CAMERA:**
+Start: (01:02.68) | End: (01:06.50)
+Low angle on the warehouse door.
+
+**SOUND FX:**
+Start: (01:02.88) | End: (01:05.08)
+The paper catches fire. A cliffhanger sting.
+
+--- SCRIPT END ---

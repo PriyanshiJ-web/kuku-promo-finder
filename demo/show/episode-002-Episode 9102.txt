@@ -1,0 +1,106 @@
+EPISODE NUMBER: Episode 2
+EPISODE LOGLINE: Mira meets Orla in the chapel and learns the will was forged.
+CONTINUITY NOTES: Invented demo show, not Kuku content.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. SALTGATE HARBOR - NIGHT
+Scene start: 00:00.00
+Scene end: 01:09.20
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:09.81)
+Slow push toward the lantern.
+
+**ACTION:**
+Start: (00:00.50) | End: (00:04.74)
+Mira slips into the dark chapel, candle in hand.
+
+**ORLA (Fearful):**
+Start: (00:05.14) | End: (00:09.61)
+"Close the door. Voss has eyes everywhere."
+
+**CAMERA:**
+Start: (00:09.81) | End: (00:18.92)
+Over-the-shoulder, tense.
+
+**MIRA (Tense):**
+Start: (00:10.01) | End: (00:13.15)
+"Tell me what you know."
+
+**ORLA (Trembling):**
+Start: (00:13.55) | End: (00:18.72)
+"Your father never signed that will. Voss forged it."
+
+**CAMERA:**
+Start: (00:18.92) | End: (00:29.15)
+Low angle on the warehouse door.
+
+**MIRA (Stunned):**
+Start: (00:19.12) | End: (00:23.52)
+"Then the boatyard was never his to sell!"
+
+**ORLA (Desperate):**
+Start: (00:23.92) | End: (00:28.95)
+"There is a second will. Hidden in the lighthouse."
+
+**CAMERA:**
+Start: (00:29.15) | End: (00:38.65)
+Quick cut to the water.
+
+**ACTION:**
+Start: (00:29.35) | End: (00:34.28)
+The chapel door bursts open and Captain Venn storms in with two guards.
+
+**CAPTAIN VENN (Menacing):**
+Start: (00:34.68) | End: (00:38.45)
+"Step away from the widow, Mira."
+
+**CAMERA:**
+Start: (00:38.65) | End: (00:47.83)
+Wide shot of the harbor.
+
+**MIRA (Defiant):**
+Start: (00:38.85) | End: (00:42.62)
+"You work for Voss now, Captain?"
+
+**CAPTAIN VENN (Cold):**
+Start: (00:43.02) | End: (00:47.63)
+"I work for whoever wins. Guards, seize her."
+
+**CAMERA:**
+Start: (00:47.83) | End: (00:56.61)
+Close-up on the speaker.
+
+**ACTION:**
+Start: (00:48.03) | End: (00:52.66)
+Tobias throws a lantern at the guards and grabs Mira's wrist.
+
+**TOBIAS (Panicked):**
+Start: (00:53.06) | End: (00:56.41)
+"Run! The lighthouse, now!"
+
+**CAMERA:**
+Start: (00:56.61) | End: (01:05.37)
+Slow push toward the lantern.
+
+**MIRA (Breathless):**
+Start: (00:56.81) | End: (00:59.95)
+"Why would you help me?"
+
+**TOBIAS (Raw):**
+Start: (01:00.35) | End: (01:05.17)
+"Because I am your brother. Voss is our father."
+
+**CAMERA:**
+Start: (01:05.37) | End: (01:09.20)
+Over-the-shoulder, tense.
+
+**SOUND FX:**
+Start: (01:05.57) | End: (01:07.77)
+Thunder cracks over the harbor. A cliffhanger sting.
+
+--- SCRIPT END ---

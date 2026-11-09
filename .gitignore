@@ -1,0 +1,13 @@
+data/
+outputs/
+.cache/
+.env
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.venv-win/
+!demo/outputs/

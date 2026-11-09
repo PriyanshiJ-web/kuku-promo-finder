@@ -1,0 +1,177 @@
+EPISODE NUMBER: Episode 2
+EPISODE LOGLINE: Tobias hides the ledger.
+CONTINUITY NOTES: Picks up from episode 1.
+
+--- SCRIPT START ---
+
+SCENE 01
+SCENE HEADING: INT. BOAT HOUSE - NIGHT
+SCENE START: 00:00.00
+
+ACTIONS AND DIALOGUE:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:04.00)
+Wide shot of the dock at dusk.
+
+**ACTION:**
+Start: (00:00.50) | End: (00:04.00)
+Mira steps back from the rail.
+
+**MIRA (Calm, Wary):**
+Start: (00:01.00) | End: (00:03.00)
+"The harbor lamp is out again."
+
+**CAMERA:**
+Start: (00:04.00) | End: (00:06.00)
+Close-up on Mira's hands.
+
+**CAMERA:**
+Start: (00:06.00) | End: (00:08.00)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (00:04.50) | End: (00:08.00)
+Tobias drops the ledger.
+
+**TOBIAS (Guarded):**
+Start: (00:05.00) | End: (00:07.00)
+"Tell Captain Venn I stayed."
+
+**CAMERA:**
+Start: (00:08.00) | End: (00:12.00)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (00:08.50) | End: (00:12.00)
+A rope snaps taut.
+
+**MIRA (Calm, Wary):**
+Start: (00:09.00) | End: (00:11.00)
+"You lied to the whole town."
+
+**CAMERA:**
+Start: (00:12.00) | End: (00:16.00)
+Over-the-shoulder on Tobias.
+
+**ACTION:**
+Start: (00:12.50) | End: (00:16.00)
+Venn lowers his hat.
+
+**TOBIAS (Guarded):**
+Start: (00:13.00) | End: (00:15.00)
+"Nobody rows out after midnight."
+
+**CAMERA:**
+Start: (00:16.00) | End: (00:18.00)
+Wide shot of the dock at dusk.
+
+**CAMERA:**
+Start: (00:18.00) | End: (00:20.00)
+Close-up on Mira's hands.
+
+**ACTION:**
+Start: (00:16.50) | End: (00:20.00)
+Mira steps back from the rail.
+
+**MIRA (Calm, Wary):**
+Start: (00:17.00) | End: (00:19.00)
+"Give me the ledger, Tobias."
+
+**SOUND FX:**
+Start: (00:19.00) | End: (00:20.00)
+A distant bell tolls once.
+
+**MIRA (O.S.) (Pleading, Afraid):**
+Start: (00:20.00) | End: (00:22.00)
+"Open the door, please."
+
+**VENN (Cold):**
+Start: (00:21.00) | End: (00:24.00)
+"You waited too long,
+and now it is done."
+
+**ACTION:**
+Start: (oops) | End: (00:23.00)
+Tobias freezes at the window.
+
+SCENE 02
+SCENE HEADING: EXT. CLIFF PATH - NIGHT
+SCENE START: 00:25.00
+SCENE END: 00:45.00
+
+ACTIONS AND DIALOGUE:
+
+**CAMERA:**
+Start: (00:25.00) | End: (00:29.00)
+Wide shot of the dock at dusk.
+
+**ACTION:**
+Start: (00:25.50) | End: (00:29.00)
+Mira steps back from the rail.
+
+**MIRA (Calm, Wary):**
+Start: (00:26.00) | End: (00:28.00)
+"The tide will not wait for us."
+
+**CAMERA:**
+Start: (00:29.00) | End: (00:31.00)
+Close-up on Mira's hands.
+
+**CAMERA:**
+Start: (00:31.00) | End: (00:33.00)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (00:29.50) | End: (00:33.00)
+Tobias drops the ledger.
+
+**TOBIAS (Guarded):**
+Start: (00:30.00) | End: (00:32.00)
+"Who sent the lantern signal?"
+
+**CAMERA:**
+Start: (00:33.00) | End: (00:37.00)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (00:33.50) | End: (00:37.00)
+A rope snaps taut.
+
+**MIRA (Calm, Wary):**
+Start: (00:34.00) | End: (00:36.00)
+"Close the gate behind you."
+
+**CAMERA:**
+Start: (00:37.00) | End: (00:41.00)
+Over-the-shoulder on Tobias.
+
+**ACTION:**
+Start: (00:37.50) | End: (00:41.00)
+Venn lowers his hat.
+
+**TOBIAS (Guarded):**
+Start: (00:38.00) | End: (00:40.00)
+"That key was never yours."
+
+**CAMERA:**
+Start: (00:41.00) | End: (00:43.00)
+Wide shot of the dock at dusk.
+
+**CAMERA:**
+Start: (00:43.00) | End: (00:45.00)
+Close-up on Mira's hands.
+
+**ACTION:**
+Start: (00:41.50) | End: (00:45.00)
+Mira steps back from the rail.
+
+**MIRA (Calm, Wary):**
+Start: (00:42.00) | End: (00:44.00)
+"The harbor lamp is out again."
+
+**SOUND FX:**
+Start: (00:44.00) | End: (00:45.00)
+A distant bell tolls once.
+
+--- SCRIPT END ---

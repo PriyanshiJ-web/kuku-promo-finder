@@ -1,0 +1,157 @@
+# Model profiles. Swap a model by editing a block here or with --profile-map stage=profile.
+# Values written as "env:NAME" are read from the environment when the profile is used.
+# extra_body (optional dict) is passed to the API as-is, e.g. reasoning controls. It is part
+# of the cache key. tpd: null means the provider does not limit daily tokens.
+# Limits below come from the human's provider dashboards (free tier).
+profiles:
+  # Gemini 3.x Flash class: 5 rpm and 20 requests per day per model, so each model is its own
+  # quota bucket and they back each other up.
+  gemini_flash:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    model: gemini-3.8-flash
+    rpm: 5
+    tpm: 250000
+    rpd: 20
+    tpd: null
+    reset_tz: America/Los_Angeles
+    max_input_tokens: 900000
+    max_output_tokens: 32000
+    json_mode: true
+    supports_seed: false
+    extra_body: {reasoning_effort: low}
+    fallback: [gemini_flash_b, gemini_flash_c, gemini_lite]
+    concurrency: 2
+  gemini_flash_b:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    model: gemini-3.6-flash
+    rpm: 5
+    tpm: 250000
+    rpd: 20
+    tpd: null
+    reset_tz: America/Los_Angeles
+    max_input_tokens: 900000
+    max_output_tokens: 32000
+    json_mode: true
+    supports_seed: false
+    extra_body: {reasoning_effort: low}
+    fallback: [gemini_flash_c, gemini_lite]
+    concurrency: 2
+  gemini_flash_c:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    model: gemini-3-flash-preview
+    rpm: 5
+    tpm: 250000
+    rpd: 20
+    tpd: null
+    reset_tz: America/Los_Angeles
+    max_input_tokens: 900000
+    max_output_tokens: 32000
+    json_mode: true
+    supports_seed: false
+    extra_body: {reasoning_effort: low}
+    fallback: [gemini_flash_b, gemini_lite]
+    concurrency: 2
+  # Flash Lite class: 15 rpm and 500 requests per day per model, used for the high-volume stages.
+  gemini_lite:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    model: gemini-3.5-flash-lite
+    rpm: 15
+    tpm: 250000
+    rpd: 500
+    tpd: null
+    reset_tz: America/Los_Angeles
+    max_input_tokens: 900000
+    max_output_tokens: 16000
+    json_mode: true
+    supports_seed: false
+    extra_body: {}
+    fallback: [gemini_lite_b]
+    concurrency: 3
+  gemini_lite_b:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    model: gemini-3.1-flash-lite
+    rpm: 15
+    tpm: 250000
+    rpd: 500
+    tpd: null
+    reset_tz: America/Los_Angeles
+    max_input_tokens: 900000
+    max_output_tokens: 16000
+    json_mode: true
+    supports_seed: false
+    extra_body: {}
+    concurrency: 3
+  # Swap-test profiles only (small context and token limits).
+  gemma:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    model: gemma-4-31b-it
+    rpm: 30
+    tpm: 16000
+    rpd: 14400
+    tpd: null
+    reset_tz: America/Los_Angeles
+    max_input_tokens: 14000
+    max_output_tokens: 4000
+    json_mode: false
+    supports_seed: false
+    concurrency: 2
+  groq_judge:
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    model: openai/gpt-oss-120b
+    rpm: 30
+    tpm: 8000
+    rpd: 1000
+    tpd: 200000
+    reset_tz: UTC
+    max_input_tokens: 6000
+    max_output_tokens: 2000
+    json_mode: true
+    supports_seed: false
+    extra_body: {reasoning_effort: low}
+    concurrency: 2
+  groq_alt:
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    model: qwen/qwen3.8-27b
+    rpm: 30
+    tpm: 8000
+    rpd: 1000
+    tpd: 200000
+    reset_tz: UTC
+    max_input_tokens: 6000
+    max_output_tokens: 2000
+    json_mode: true
+    supports_seed: false
+    concurrency: 2
+  custom:
+    base_url: env:CUSTOM_BASE_URL
+    api_key_env: CUSTOM_API_KEY
+    model: env:CUSTOM_MODEL
+    rpm: 30                   # placeholder, set for the interviewer's endpoint
+    tpm: 200000               # placeholder
+    rpd: 5000                 # placeholder
+    tpd: null
+    reset_tz: UTC
+    max_input_tokens: 100000  # placeholder
+    max_output_tokens: 8192   # placeholder
+    json_mode: false          # custom endpoints often reject response_format, turn on if supported
+    supports_seed: false
+    concurrency: 4
+  fake:                       # tests only
+    provider: fake
+    model: fake-model
+    rpm: 100000
+    tpm: 100000000
+    rpd: 100000000
+    max_input_tokens: 1000000
+    max_output_tokens: 8192
+    json_mode: true
+    supports_seed: true
+    concurrency: 8

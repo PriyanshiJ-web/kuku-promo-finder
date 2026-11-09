@@ -1,0 +1,71 @@
+{
+ "episodes": null,
+ "folder": "demo\\show",
+ "name": "demo",
+ "offline": true,
+ "stages": {
+  "bible": {
+   "artifact_sha": "c7951ad974040d2004f3d8482823da1d05bbabe7a0a88e1ca6c95158b83fe433",
+   "calls": 0,
+   "hash": "445efdf07e34af14a1e67b411eacdad923a6280efc5a551ebf76c0867ad8c103",
+   "seconds": 0.02,
+   "tokens": 0
+  },
+  "build": {
+   "artifact_sha": "bd97f54fec448d9bf590439a48a86dc0caad6f9c6c0f398a2eb33da16e35f402",
+   "calls": 0,
+   "hash": "67c7ff116c317bc6980ab922b60e20527656bbeeefe32e7b70244d12cf8f0266",
+   "seconds": 0.02,
+   "tokens": 0
+  },
+  "coldview": {
+   "artifact_sha": "9dddc41b79a8f3e03d1e51def89e429c55997f652f164c2d859e727a6413502f",
+   "calls": 0,
+   "hash": "d54e62b56f246988593db2061ba1c356f9508a0a1990cfccdb6220fc0b6ad14c",
+   "seconds": 0.01,
+   "tokens": 0
+  },
+  "gates": {
+   "artifact_sha": "f9d898121523eb278231a521380886fdb59ec1a28a2eb5f182d2a5d65c89fc30",
+   "calls": 0,
+   "hash": "d15a5ff8ec9002e2e6d7fe7157b6486a74c21fb6f3d92b963f7612dc00e01aa8",
+   "seconds": 0.0,
+   "tokens": 0
+  },
+  "montage": {
+   "artifact_sha": "a14d764b9c97bcb1ea4816de4a8771c397d2ebc6a7c7b4d51b2b96906a62f383",
+   "calls": 0,
+   "hash": "efbd406e6bae2b38af63d3ad83d7c0f66aa062599ff3137f72ab3f32737b35fe",
+   "seconds": 0.0,
+   "tokens": 0
+  },
+  "parse": {
+   "artifact_sha": "d478face24fdecdbd29f8e28046f76e74df00828a33789b53d389d234e82b70b",
+   "calls": 0,
+   "hash": "44e5321f5627938224b50824774f39dd15b17405caaf9a798d3875319d4df8b6",
+   "seconds": 0.0,
+   "tokens": 0
+  },
+  "propose": {
+   "artifact_sha": "cd0d0c1cc32624f891d02fa7acfa6ad2cd649038c8f251b8f257a913f583f729",
+   "calls": 0,
+   "hash": "36de7e7b3ff153ef5e8edd686116ab707967241da16ff8d5bb646124ac7cc00a",
+   "seconds": 0.0,
+   "tokens": 0
+  },
+  "rank": {
+   "artifact_sha": "62f4a172d0d17b7089d454a2f835b11ace8e2ac3c4659e1ef5837185bedc6125",
+   "calls": 0,
+   "hash": "64ccec51f1d7e4cc645233a3743f913e07f51d599cd7752579f23a533a2994e6",
+   "seconds": 0.09,
+   "tokens": 0
+  },
+  "report": {
+   "artifact_sha": "6906aeedecbdb7cacf26ef8fbafaf65fe615cb4cdafe9374cda19fb4208b30ea",
+   "calls": 0,
+   "hash": "55a1562fc997ffc71a264ec168bb3a2ea9784876c1626c63ead24c8315d32da1",
+   "seconds": 0.05,
+   "tokens": 0
+  }
+ }
+}

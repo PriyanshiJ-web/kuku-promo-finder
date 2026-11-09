@@ -1,0 +1,158 @@
+EPISODE LOGLINE: The ledger changes hands.
+CONTINUITY NOTES: Resolves the dock standoff.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: INT. CHAPEL - DAWN
+Scene start: 0:00
+Scene end: 0:24
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (0:00) | End: (0:04)
+Wide shot of the dock at dusk.
+
+**ACTION:**
+Start: (0:00.5) | End: (0:04)
+Mira steps back from the rail.
+
+**MIRA (Calm, Wary):**
+Start: (0:01) | End: (0:03)
+"The harbor lamp is out again."
+
+**CAMERA:**
+Start: (0:04) | End: (0:06)
+Close-up on Mira's hands.
+
+**CAMERA:**
+Start: (0:06) | End: (0:08)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (0:04.5) | End: (0:08)
+Tobias drops the ledger.
+
+**TOBIAS (Guarded):**
+Start: (0:05) | End: (0:07)
+"Tell Captain Venn I stayed."
+
+**CAMERA:**
+Start: (0:08) | End: (0:12)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (0:08.5) | End: (0:12)
+A rope snaps taut.
+
+**MIRA (Calm, Wary):**
+Start: (0:09) | End: (0:11)
+"You lied to the whole town."
+
+**CAMERA:**
+Start: (0:12) | End: (0:16)
+Over-the-shoulder on Tobias.
+
+**ACTION:**
+Start: (0:12.5) | End: (0:16)
+Venn lowers his hat.
+
+**TOBIAS (Guarded):**
+Start: (0:13) | End: (0:15)
+"Nobody rows out after midnight."
+
+**CAMERA:**
+Start: (0:16) | End: (0:18)
+Wide shot of the dock at dusk.
+
+**CAMERA:**
+Start: (0:18) | End: (0:20)
+Close-up on Mira's hands.
+
+**ACTION:**
+Start: (0:16.5) | End: (0:20)
+Mira steps back from the rail.
+
+**MIRA (Calm, Wary):**
+Start: (0:17) | End: (0:19)
+"Give me the ledger, Tobias."
+
+**SOUND FX:**
+Start: (0:19) | End: (0:20)
+A distant bell tolls once.
+
+**CAMERA:**
+Start: (0:20) | End: (0:24)
+Close-up on Mira's hands.
+
+**ACTION:**
+Start: (0:20.5) | End: (0:24)
+Tobias drops the ledger.
+
+**TOBIAS (Guarded):**
+Start: (0:21) | End: (0:23)
+"I kept my promise to you."
+
+Editor note: tighten this scene.
+
+SCENE 02
+Scene heading: EXT. CHAPEL YARD - DAWN
+Scene start: 0:24
+Scene end: 0:40
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (0:24) | End: (0:28)
+Wide shot of the dock at dusk.
+
+**ACTION:**
+Start: (0:24.5) | End: (0:28)
+Mira steps back from the rail.
+
+**VENN (Stern):**
+Start: (0:25) | End: (0:27)
+"The tide will not wait for us."
+
+**CAMERA:**
+Start: (0:28) | End: (0:30)
+Close-up on Mira's hands.
+
+**CAMERA:**
+Start: (0:30) | End: (0:32)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (0:28.5) | End: (0:32)
+Tobias drops the ledger.
+
+**MIRA (Defiant):**
+Start: (0:29) | End: (0:31)
+"Who sent the lantern signal?"
+
+**CAMERA:**
+Start: (0:32) | End: (0:36)
+Slow push on the lantern.
+
+**ACTION:**
+Start: (0:32.5) | End: (0:36)
+A rope snaps taut.
+
+**VENN (Stern):**
+Start: (0:33) | End: (0:35)
+"Close the gate behind you."
+
+**CAMERA:**
+Start: (0:36) | End: (0:40)
+Over-the-shoulder on Tobias.
+
+**ACTION:**
+Start: (0:36.5) | End: (0:40)
+Venn lowers his hat.
+
+**MIRA (Defiant):**
+Start: (0:37) | End: (0:39)
+"That key was never yours."
+
+--- SCRIPT END ---

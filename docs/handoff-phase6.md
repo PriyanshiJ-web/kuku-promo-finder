@@ -1,0 +1,21 @@
+### HANDOFF phase 6
+- Done:
+  - judge prompt (two clips only, hook then ending then cold understanding, JSON with winner and a reason of at most 20 words): done, prompts/judge_pairwise.md
+  - Swiss pairing, both-order judging, Bradley-Terry (MM with a 0.5 pseudo-win prior), MMR, post_first_reason, all in stages/rank.py and stages/pairwise.py: done
+  - tests (tests/test_pairwise.py, tests/test_rank.py): BT recovers a transitive and a noisy tournament order, split decisions score 0.5, no rematches over four rounds with odd counts, MMR keeps near-identical clips out of the top three, candidates outside the top 24 stay below: done
+  - rerun of the full show with earlier stages cached: done
+- Files: prompts/judge_pairwise.md, src/promo/stages/pairwise.py, src/promo/stages/rank.py, tests/test_pairwise.py, tests/test_rank.py.
+- Commands run: pytest 177 passed, ruff clean. `promo run` on the 50-episode show, only rank and report ran.
+- Sample output:
+  - judge calls: 92 provider calls (3 were 429 retries) for 48 pairs judged in both orders, 94,716 tokens, 379 s
+  - position-bias rate: 19 of 48 pairs had split decisions, 39.6%
+  - post_first_reason: present for 18 of 120 promos (only clean wins carry a reason, split decisions are ignored)
+  - top 10 against the pointwise top 10: 6 of the 10 are shared. Where the old top 10 went (new rank): 7, 1, 16, 6, 2, 23, 21, 10, 11, 4. The new top 10 holds clips that were at pointwise rank 2, 5, 4, 10, 1, 8 and four from below the old top 10.
+  - new top 10: rank 1 ep 3 56.3-88.1 violence, 2 montage (ep 9, ep 39, ep 42) reveal, 3 ep 32 132.0-154.4 threat, 4 ep 39 62.0-98.0 twist, 5 ep 15 46.5-86.0 violence, 6 ep 36 151.5-196.8 threat, 7 ep 3 58.2-88.0 violence, 8 ep 25 two segments reveal, 9 ep 28 95.2-136.7 reveal, 10 ep 31 130.5-155.2 threat
+- Deviations from spec: none. The reason for a pair is kept only when both orders agree (a split carries no clean win).
+- Assumptions added: the phase 6 lines in docs/assumptions.md.
+- Known issues / TODO:
+  - Position bias is high (39.6%), which is why both orders are used, but it means a third of the pairs add little information. Four rounds of 12 pairs is a small tournament for 24 clips.
+  - Ranks 1 and 7 are the tight and loose variants of one moment. MMR lowered the second but did not remove it. A final list that keeps only the best variant per source would be cleaner, not done because the spec leaves the variant choice to the ranker.
+  - Only 18 promos have a post_first_reason, because most pairs outside the top 24 are never judged.
+- Tokens/cost used this phase: 94,716 tokens in 92 calls, $0 on the free tier.

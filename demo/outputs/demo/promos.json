@@ -1,0 +1,440 @@
+[
+ {
+  "bt": null,
+  "candidate": {
+   "cliff_id": "E02-L023",
+   "cliffhanger_text": "",
+   "confidence": 0.55,
+   "duration": 21.17,
+   "hook_id": "E02-L017",
+   "hook_text": "",
+   "hook_type": "violence",
+   "id": "2738ac66b34f",
+   "kind": "single",
+   "notes": [
+    "extended_end"
+   ],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 69.2,
+     "end_id": "E02-L023",
+     "ep": 2,
+     "start": 48.03,
+     "start_id": "E02-L017"
+    }
+   ],
+   "source": "propose:E02-L017",
+   "variant": "tight",
+   "why": "keyword and emotion density"
+  },
+  "coldview": null,
+  "final": 0.55,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.55,
+  "post_first_reason": "",
+  "rank": 1
+ },
+ {
+  "bt": null,
+  "candidate": {
+   "cliff_id": "E03-L017",
+   "cliffhanger_text": "",
+   "confidence": 0.25,
+   "duration": 46.55,
+   "hook_id": "E03-L003",
+   "hook_text": "",
+   "hook_type": "shocking_line",
+   "id": "31741facda15",
+   "kind": "single",
+   "notes": [
+    "loose"
+   ],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 51.44,
+     "end_id": "E03-L017",
+     "ep": 3,
+     "start": 4.89,
+     "start_id": "E03-L003"
+    }
+   ],
+   "source": "propose:E03-L003",
+   "variant": "loose",
+   "why": "keyword and emotion density"
+  },
+  "coldview": null,
+  "final": 0.25,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.25,
+  "post_first_reason": "",
+  "rank": 2
+ },
+ {
+  "bt": null,
+  "candidate": {
+   "cliff_id": "E04-L023",
+   "cliffhanger_text": "",
+   "confidence": 0.2214,
+   "duration": 27.9,
+   "hook_id": "E04-L014",
+   "hook_text": "",
+   "hook_type": "shocking_line",
+   "id": "53d0c22a6a6b",
+   "kind": "single",
+   "notes": [],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 64.98,
+     "end_id": "E04-L023",
+     "ep": 4,
+     "start": 37.08,
+     "start_id": "E04-L014"
+    }
+   ],
+   "source": "propose:E04-L014",
+   "variant": "tight",
+   "why": "keyword and emotion density"
+  },
+  "coldview": null,
+  "final": 0.2214,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.2214,
+  "post_first_reason": "",
+  "rank": 3
+ },
+ {
+  "bt": null,
+  "candidate": {
+   "cliff_id": "E01-L024",
+   "cliffhanger_text": "",
+   "confidence": 0.1667,
+   "duration": 35.74,
+   "hook_id": "E01-L012",
+   "hook_text": "",
+   "hook_type": "violence",
+   "id": "0dd4e1f2c67c",
+   "kind": "single",
+   "notes": [],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 69.77,
+     "end_id": "E01-L024",
+     "ep": 1,
+     "start": 34.03,
+     "start_id": "E01-L012"
+    }
+   ],
+   "source": "propose:E01-L012",
+   "variant": "tight",
+   "why": "keyword and emotion density"
+  },
+  "coldview": null,
+  "final": 0.1667,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.1667,
+  "post_first_reason": "",
+  "rank": 4
+ },
+ {
+  "bt": null,
+  "candidate": {
+   "cliff_id": "E02-L021",
+   "cliffhanger_text": "",
+   "confidence": 0.25,
+   "duration": 46.05,
+   "hook_id": "E02-L008",
+   "hook_text": "",
+   "hook_type": "shocking_line",
+   "id": "9da5e6b6722a",
+   "kind": "single",
+   "notes": [],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 65.17,
+     "end_id": "E02-L021",
+     "ep": 2,
+     "start": 19.12,
+     "start_id": "E02-L008"
+    }
+   ],
+   "source": "propose:E02-L008",
+   "variant": "tight",
+   "why": "keyword and emotion density"
+  },
+  "coldview": null,
+  "final": 0.25,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.25,
+  "post_first_reason": "",
+  "rank": 5
+ },
+ {
+  "bt": null,
+  "candidate": {
+   "cliff_id": "E04-L018",
+   "cliffhanger_text": "",
+   "confidence": 0.1818,
+   "duration": 48.33,
+   "hook_id": "E04-L003",
+   "hook_text": "",
+   "hook_type": "shocking_line",
+   "id": "c8e92f88e3e8",
+   "kind": "single",
+   "notes": [
+    "loose"
+   ],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 53.46,
+     "end_id": "E04-L018",
+     "ep": 4,
+     "start": 5.13,
+     "start_id": "E04-L003"
+    }
+   ],
+   "source": "propose:E04-L003",
+   "variant": "loose",
+   "why": "keyword and emotion density"
+  },
+  "coldview": null,
+  "final": 0.1818,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.1818,
+  "post_first_reason": "",
+  "rank": 6
+ }
+]

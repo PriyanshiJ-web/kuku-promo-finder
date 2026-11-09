@@ -1,0 +1,28 @@
+### HANDOFF phase 4
+- Done: tests first (tests/test_build.py, 26 tests, plus a stage test); build and code gates implemented; wired into the runner with hash-skip.
+  - start snaps into [hook.start-3, hook.start], hook never later than 3.0 s after start (property test over all fixture dialogue pairs): done
+  - start_id earlier than the window is ignored for the window: done
+  - end never strictly inside dialogue (property test over the fixture show): done
+  - too_short extends only over non-dialogue intervals, else dropped with too_short: done
+  - too_long becomes two segments with the cliff in segment 2, else dropped with too_long: done
+  - tight and loose variants, identical loose variant skipped: done
+  - montage: cross-episode, chronological, first-segment hook window, short segment, total length: done
+  - dedupe by time IoU and by dialogue Jaccard, recap opening of the next episode caught: done
+  - G1, G2, G3, G_seg pass and fail with reasons: done
+- Files: src/promo/stages/build.py, src/promo/stages/gates.py, src/promo/runner.py (ORDER, DEPS), src/promo/parse/render.py (clip_lines), src/promo/cli.py (build and gates summary), tests/test_build.py, tests/synth.py, tests/test_stages.py.
+- Commands run: pytest 138 passed, ruff clean. promo run on episodes 1-5, no LLM call (bible, propose and montage came from the cache and artifacts).
+- Sample output (episodes 1-5, 10 proposals and 5 montage proposals in):
+  - candidates built 19, kept 17: single/tight 8, single/loose 6, montage/tight 3
+  - drops: too_short 2, duplicate 2 (too_long 0, bad_span 0)
+  - hard gate pass: 17 of 17 (G1 17, G2 17, G3 17, G_seg 17)
+  - soft gates: G6 honest promise passes 9 of 17, G7 no spoiler passes 7 of 17
+  - duration histogram (5 s buckets): 20-25: 7, 25-30: 4, 30-35: 4, 45-50: 1, 55-60: 1
+  - spot check of all 17: hook offset 1.0 to 3.0 s, every boundary on a cut, two clips extended at the end, one split into two segments (58.1 s)
+- Deviations from spec: variants of one proposal are exempt from dedupe against each other (see assumptions).
+- Assumptions added: 7 lines tagged phase 4 in docs/assumptions.md.
+- Known issues / TODO:
+  - "End before the answer" cannot be checked by code, it needs a human read of the top clips (phase 5 report prints transcripts).
+  - Loose variants differ from tight ones by only 0.1 to 2 s on most clips, so they add little choice.
+  - The 2 too_short drops are proposals of 18.6 s and 20.3 s whose next interval holds dialogue, as the spec intends.
+  - G7 fails on 10 of 17 clips: the bible marks 7 spoiler lines in 5 episodes. It is a soft penalty only.
+- Tokens/cost used this phase: none (no LLM calls).

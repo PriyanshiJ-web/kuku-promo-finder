@@ -1,0 +1,106 @@
+EPISODE NUMBER: Episode 5
+EPISODE LOGLINE: Who fired the shot? The truth about the harbor is finally told.
+CONTINUITY NOTES: Invented demo show, not Kuku content.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. SALTGATE HARBOR - NIGHT
+Scene start: 00:00.00
+Scene end: 01:07.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:09.14)
+Quick cut to the water.
+
+**ACTION:**
+Start: (00:00.50) | End: (00:04.77)
+Smoke drifts from the barrel as everyone freezes.
+
+**TOBIAS (Dazed):**
+Start: (00:05.17) | End: (00:08.94)
+"I am not hit. Why am I not hit?"
+
+**CAMERA:**
+Start: (00:09.14) | End: (00:17.88)
+Wide shot of the harbor.
+
+**MIRA (Stunned):**
+Start: (00:09.34) | End: (00:13.04)
+"Voss is the one on the ground."
+
+**ACTION:**
+Start: (00:13.44) | End: (00:17.68)
+Orla lowers a smoking pistol with shaking hands.
+
+**CAMERA:**
+Start: (00:17.88) | End: (00:26.78)
+Close-up on the speaker.
+
+**ORLA (Broken):**
+Start: (00:18.08) | End: (00:22.62)
+"I told you I would finish what he started."
+
+**CAPTAIN VENN (Grim):**
+Start: (00:23.02) | End: (00:26.58)
+"Nobody saw this. Understood?"
+
+**CAMERA:**
+Start: (00:26.78) | End: (00:36.09)
+Slow push toward the lantern.
+
+**MIRA (Firm):**
+Start: (00:26.98) | End: (00:30.89)
+"No. We tell the truth. All of it."
+
+**ACTION:**
+Start: (00:31.29) | End: (00:35.89)
+Mira climbs the lighthouse stairs and lights the great lamp.
+
+**CAMERA:**
+Start: (00:36.09) | End: (00:45.27)
+Over-the-shoulder, tense.
+
+**TOBIAS (Softly):**
+Start: (00:36.29) | End: (00:39.78)
+"The whole town will see it."
+
+**MIRA (Resolute):**
+Start: (00:40.18) | End: (00:45.07)
+"Good. Let them see who really owns this harbor."
+
+**CAMERA:**
+Start: (00:45.27) | End: (00:54.01)
+Low angle on the warehouse door.
+
+**ACTION:**
+Start: (00:45.47) | End: (00:50.13)
+Across the water, a ship answers the signal with three lights.
+
+**MIRA (Puzzled):**
+Start: (00:50.53) | End: (00:53.81)
+"That is no fishing boat."
+
+**CAMERA:**
+Start: (00:54.01) | End: (01:03.19)
+Quick cut to the water.
+
+**CAPTAIN VENN (Alarmed):**
+Start: (00:54.21) | End: (00:59.10)
+"That is the king's navy. Someone sent for them."
+
+**ORLA (Whispering):**
+Start: (00:59.50) | End: (01:02.99)
+"I sent for them months ago."
+
+**CAMERA:**
+Start: (01:03.19) | End: (01:07.00)
+Wide shot of the harbor.
+
+**SOUND FX:**
+Start: (01:03.39) | End: (01:05.59)
+The lamp swells to a final cliffhanger peak. Cut to black.
+
+--- SCRIPT END ---

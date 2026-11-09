@@ -1,0 +1,22 @@
+### HANDOFF phase 7
+- Done:
+  - offline mode (src/promo/heuristics.py, `--offline`): keyword and emotion lexicon, no model call, same build and code gates: done. A test confirms zero model calls with no API key set, and a fresh clone ran it end to end.
+  - eval package (baselines, perturbations, metrics) and `promo eval --show duke`: done. eval/labels/template.csv holds the header only, labels.csv was never created.
+  - tests: offline runs on fixtures without a key, baselines are valid candidates that pass G1 and G2, metric functions on toy data, label reading never creates a file: done
+- Files: src/promo/heuristics.py, src/promo/evaluation/{baselines,perturb,metrics,run}.py, prompts/single_prompt.md, eval/labels/template.csv, src/promo/cli.py, tests/test_offline.py, tests/test_eval.py.
+- Commands run: pytest 177 passed, ruff clean. `promo eval --show duke --profile-map propose=gemini_flash_c`.
+- Sample output (outputs/duke/eval.md, numbers only):
+  - tool top 10 win rate as written in outputs/duke/eval.json after the second eval run (1 win, 0.5 split, 0 loss, both orders): random_45 0.85 over 10 pairs (split 0.1), last_45 0.8 over 10 pairs (split 0.2), heuristic 0.7 over 10 pairs (split 0.2), single_prompt 0.4444 over 9 pairs (split 0.4444). These figures were corrected in docs/handoff-fixes.md, which explains why the first run differed.
+  - perturbation, original preferred: early (start 8 s earlier) 0.35 over 10 pairs with split rate 0.5, late (cut after the answer) 0.4375 over 8 pairs with split rate 0.875
+  - precision@10 against hand labels: no labels
+  - diversity (1 minus mean pairwise IoU of the top 10): 0.9757
+  - top 10 hook types: violence 3, reveal 3, threat 3, twist 1. Top 10 spans 9 episodes (episode 3 twice).
+  - swap overlap: see the phase 8 handoff
+- Deviations from spec: eval code lives in the package src/promo/evaluation rather than a top-level eval/ folder so it can be imported. Baselines are not passed through the cold-view and code gates (they are not built to satisfy the hook rule), only the judge is shared, so the comparison is judge-only.
+- Assumptions added: the phase 7 lines in docs/assumptions.md.
+- Known issues / TODO:
+  - The perturbation check FAILED its target. The plan wanted the original preferred more than 80% of the time, the judge preferred it only 35% (early) and 44% (late). Most of the late verdicts were position-biased splits (87.5%), so the judge mostly could not tell the original from the version with the answer included, and for early it slightly preferred the longer clip. The judge reads text only, so a buried hook (8 s of extra lines) is not visible as a weaker opening, and more context can look clearer. This means the judge's ranking cannot be trusted to punish a late cut or a buried hook. I did not tune anything to hide this.
+  - Against the single_prompt baseline the tool scored 0.4444, below 0.5: on this judge it does not beat one prompt over the whole show (9 pairs, 44% of them split, so the result is noisy). The earlier text that said the tool beat every baseline was wrong.
+  - Win rates use 10 pairs per baseline, so one pair is worth 0.1.
+  - "last_45" is the strongest likely baseline for a human editor and scored 0.80 for the tool on this judge, which is not a human result.
+- Tokens/cost used this phase: eval about 112 judge calls on gemini_lite plus one single_prompt call on gemini_flash_c, $0.
