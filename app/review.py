@@ -152,11 +152,11 @@ with tab_p:
             st.subheader(f"Rank {p['rank']}: {c['duration']:.1f} s, {c['hook_type']}")
             left, right = st.columns([3, 2])
             with left:
-                st.markdown(f"**Hook.** {c['hook_text']}")
-                st.markdown(f"**Cliffhanger.** {c['cliffhanger_text']}")
-                st.markdown(f"**Open question.** {c['open_question']}")
-                st.markdown(f"**Why it works.** {c['why']}")
-                st.markdown(f"**Why post it first.** {p['post_first_reason'] or 'n/a'}")
+                for label, value in (("Hook", c["hook_text"]), ("Cliffhanger", c["cliffhanger_text"]),
+                                     ("Open question", c["open_question"]), ("Why it works", c["why"]),
+                                     ("Why post it first", p["post_first_reason"])):  # fmt: skip
+                    if value:
+                        st.markdown(f"**{label}.** {value}")
                 st.dataframe(pd.DataFrame([{
                     "Segment": i, "Episode": s["ep"], "Start": mmss(s["start"]),
                     "End": mmss(s["end"]), "Length (s)": round(s["end"] - s["start"], 1),
@@ -174,7 +174,11 @@ with tab_p:
                     st.caption("No cold-viewer scores (offline run).")
                 st.markdown("**Checks**")
                 for g in p["gates"]:
-                    st.write(f"{'Pass' if g['passed'] else 'Fail'}: {GATES.get(g['gate'], g['gate'])}")
+                    name = GATES.get(g["gate"], g["gate"])
+                    if g["gate"] == "G6" and g["reason"] == "no question_ref":
+                        st.write(f"Not checked: {name} (no open question linked)")
+                    else:
+                        st.write(f"{'Pass' if g['passed'] else 'Fail'}: {name}")
             if src and Path(src).is_dir():
                 cand = Candidate.model_validate(c)
                 lines = []

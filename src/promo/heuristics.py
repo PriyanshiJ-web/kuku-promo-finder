@@ -60,6 +60,8 @@ def propose_offline(show: Show, max_props: int) -> list[Proposal]:
             taken.append(ln.start)
             out.append(Proposal(ep=ep.num, start_id=ln.id, hook_id=ln.id, cliff_id=last.id,
                                 end_id=last.id, hook_type=hits[i][1], confidence=round(conf, 4),
+                                hook_text=ln.text.strip('"')[:160],
+                                cliffhanger_text=last.text.strip('"')[:160],
                                 why="keyword and emotion density" if conf > 0.05
                                 else "no keywords: last 45 s of the episode"))  # fmt: skip
     return out

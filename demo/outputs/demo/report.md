@@ -12,8 +12,8 @@
 
 ### 1. single/tight, 21.2s, violence
 - segments: E02 00:48.03 to 01:09.20
-- hook: 
-- cliffhanger: 
+- hook: Tobias throws a lantern at the guards and grabs Mira's wrist.
+- cliffhanger: Thunder cracks over the harbor. A cliffhanger sting.
 - why: keyword and emotion density
 - post first because: n/a
 - scores: pointwise 0.550, final 0.550
@@ -29,8 +29,8 @@
 
 ### 2. single/loose, 46.5s, shocking_line
 - segments: E03 00:04.89 to 00:51.44
-- hook: 
-- cliffhanger: 
+- hook: You knew. All these years, you knew!
+- cliffhanger: Where is the second will?
 - why: keyword and emotion density
 - post first because: n/a
 - scores: pointwise 0.250, final 0.250
@@ -51,8 +51,8 @@
 
 ### 3. single/tight, 27.9s, shocking_line
 - segments: E04 00:37.08 to 01:04.98
-- hook: 
-- cliffhanger: 
+- hook: Kill them all!
+- cliffhanger: A single gunshot rings out. A cliffhanger sting.
 - why: keyword and emotion density
 - post first because: n/a
 - scores: pointwise 0.221, final 0.221
@@ -70,8 +70,8 @@
 
 ### 4. single/tight, 35.7s, violence
 - segments: E01 00:34.03 to 01:09.77
-- hook: 
-- cliffhanger: 
+- hook: You just struck me in front of the whole dock!
+- cliffhanger: The lantern shatters. A sharp cliffhanger sting.
 - why: keyword and emotion density
 - post first because: n/a
 - scores: pointwise 0.167, final 0.167
@@ -91,8 +91,8 @@
 
 ### 5. single/loose, 44.4s, other
 - segments: E05 00:22.62 to 01:07.00
-- hook: 
-- cliffhanger: 
+- hook: Nobody saw this. Understood?
+- cliffhanger: The lamp swells to a final cliffhanger peak. Cut to black.
 - why: no keywords: last 45 s of the episode
 - post first because: n/a
 - scores: pointwise 0.050, final 0.050
@@ -113,8 +113,8 @@
 
 ### 6. single/tight, 46.0s, shocking_line
 - segments: E02 00:19.12 to 01:05.17
-- hook: 
-- cliffhanger: 
+- hook: Then the boatyard was never his to sell!
+- cliffhanger: Because I am your brother. Voss is our father.
 - why: keyword and emotion density
 - post first because: n/a
 - scores: pointwise 0.250, final 0.250
@@ -135,8 +135,8 @@
 
 ### 7. single/loose, 48.3s, shocking_line
 - segments: E04 00:05.13 to 00:53.46
-- hook: 
-- cliffhanger: 
+- hook: It is only a blank page!
+- cliffhanger: You think you have won?
 - why: keyword and emotion density
 - post first because: n/a
 - scores: pointwise 0.182, final 0.182
