@@ -294,6 +294,80 @@
  {
   "bt": null,
   "candidate": {
+   "cliff_id": "E05-L023",
+   "cliffhanger_text": "",
+   "confidence": 0.05,
+   "duration": 44.38,
+   "hook_id": "E05-L009",
+   "hook_text": "",
+   "hook_type": "other",
+   "id": "0ae31a1ec701",
+   "kind": "single",
+   "notes": [
+    "loose"
+   ],
+   "open_question": "",
+   "question_ref": null,
+   "segments": [
+    {
+     "end": 67.0,
+     "end_id": "E05-L023",
+     "ep": 5,
+     "start": 22.62,
+     "start_id": "E05-L009"
+    }
+   ],
+   "source": "propose:E05-L009",
+   "variant": "loose",
+   "why": "no keywords: last 45 s of the episode"
+  },
+  "coldview": null,
+  "final": 0.05,
+  "gates": [
+   {
+    "gate": "G1",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G2",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G3",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G_seg",
+    "hard": true,
+    "passed": true,
+    "reason": ""
+   },
+   {
+    "gate": "G6",
+    "hard": false,
+    "passed": false,
+    "reason": "no question_ref"
+   },
+   {
+    "gate": "G7",
+    "hard": false,
+    "passed": true,
+    "reason": ""
+   }
+  ],
+  "pointwise": 0.05,
+  "post_first_reason": "",
+  "rank": 5
+ },
+ {
+  "bt": null,
+  "candidate": {
    "cliff_id": "E02-L021",
    "cliffhanger_text": "",
    "confidence": 0.25,
@@ -361,7 +435,7 @@
   ],
   "pointwise": 0.25,
   "post_first_reason": "",
-  "rank": 5
+  "rank": 6
  },
  {
   "bt": null,
@@ -435,6 +509,6 @@
   ],
   "pointwise": 0.1818,
   "post_first_reason": "",
-  "rank": 6
+  "rank": 7
  }
 ]

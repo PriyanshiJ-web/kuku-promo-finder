@@ -3,12 +3,12 @@
 ## Summary
 
 - episodes analysed: 5 of 5
-- proposals kept: 9, montage proposals kept: 0
-- candidates built: 14, passing code gates: 14
-- ranked promos (all hard gates passed): 6, one variant per proposal
+- proposals kept: 10, montage proposals kept: 0
+- candidates built: 16, passing code gates: 16
+- ranked promos (all hard gates passed): 7, one variant per proposal
 - cut polish: {'start_after_fragment': 0, 'fragment_start_kept': 0, 'end_before_answer': 0, 'answer_inside_flagged': 0, 'near_duplicates_dropped': 1}
 
-## Top 6
+## Top 7
 
 ### 1. single/tight, 21.2s, violence
 - segments: E02 00:48.03 to 01:09.20
@@ -89,7 +89,29 @@
 [33.5s] SFX: The lantern shatters. A sharp cliffhanger sting.
 ```
 
-### 5. single/tight, 46.0s, shocking_line
+### 5. single/loose, 44.4s, other
+- segments: E05 00:22.62 to 01:07.00
+- hook: 
+- cliffhanger: 
+- why: no keywords: last 45 s of the episode
+- post first because: n/a
+- scores: pointwise 0.050, final 0.050
+- gates failed: G6
+
+```
+[00.4s] CAPTAIN VENN (grim): "Nobody saw this. Understood?"
+[04.4s] MIRA (firm): "No. We tell the truth. All of it."
+[08.7s] ACTION: Mira climbs the lighthouse stairs and lights the great lamp.
+[13.7s] TOBIAS (softly): "The whole town will see it."
+[17.6s] MIRA (resolute): "Good. Let them see who really owns this harbor."
+[22.8s] ACTION: Across the water, a ship answers the signal with three lights.
+[27.9s] MIRA (puzzled): "That is no fishing boat."
+[31.6s] CAPTAIN VENN (alarmed): "That is the king's navy. Someone sent for them."
+[36.9s] ORLA (whispering): "I sent for them months ago."
+[40.8s] SFX: The lamp swells to a final cliffhanger peak. Cut to black.
+```
+
+### 6. single/tight, 46.0s, shocking_line
 - segments: E02 00:19.12 to 01:05.17
 - hook: 
 - cliffhanger: 
@@ -111,7 +133,7 @@
 [41.2s] TOBIAS (raw): "Because I am your brother. Voss is our father."
 ```
 
-### 6. single/loose, 48.3s, shocking_line
+### 7. single/loose, 48.3s, shocking_line
 - segments: E04 00:05.13 to 00:53.46
 - hook: 
 - cliffhanger: 
@@ -138,14 +160,14 @@
 
 | gate | passed |
 |---|---|
-| G1 | 14 of 14 |
-| G2 | 14 of 14 |
-| G3 | 14 of 14 |
-| G_seg | 14 of 14 |
-| G6 | 0 of 14 |
-| G7 | 14 of 14 |
-| G4 | 0 of 14 |
-| G5 | 0 of 14 |
+| G1 | 16 of 16 |
+| G2 | 16 of 16 |
+| G3 | 16 of 16 |
+| G_seg | 16 of 16 |
+| G6 | 0 of 16 |
+| G7 | 16 of 16 |
+| G4 | 0 of 16 |
+| G5 | 0 of 16 |
 
 ## Drop reasons
 
@@ -171,4 +193,4 @@
 - montage: gemini_flash (gemini-3.8-flash)
 - coldview: gemini_lite (gemini-3.5-flash-lite)
 - judge: gemini_lite (gemini-3.5-flash-lite)
-- cold view answered 0 of 14 clips
+- cold view answered 0 of 16 clips
