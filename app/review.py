@@ -228,15 +228,21 @@ with tab_q:
     if run:
         for name, title in (
             ("audit.md", "Defect audit (rule-based, no model)"),
+            ("eval_gemini_judge.md", "Comparison with baselines, Gemini judge"),
+            ("eval_groq_judge.md", "Comparison with baselines, Groq judge"),
             ("eval.md", "Comparison with baselines (judge model)"),
             ("report.md", "Run report"),
         ):
             f = run / name
+            if name == "eval.md" and (run / "eval_gemini_judge.md").exists():
+                continue  # eval.md is a copy of the Gemini-judge file, do not show it twice
             if f.exists():
                 shown = True
                 main, fails = split_failures(f.read_text(encoding="utf-8"))
                 failed += [fails] if fails else []
-                with st.expander(title, expanded=name != "report.md"):
+                main = re.sub(r"^(#{1,2}) ", lambda m: "#" * (len(m.group(1)) + 2) + " ", main,
+                              flags=re.M)  # smaller headings inside the expander
+                with st.expander(title, expanded=name in ("audit.md", "eval_gemini_judge.md")):
                     st.markdown(main)
     if run and (done_q := reviews(run)):
         top10 = {p["candidate"]["id"] for p in (promos or [])[:10]}
